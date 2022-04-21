@@ -1,0 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+			<!-- content end -->
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#cccccc" align="center">
+		Copyright by bitacademy co.ltd. All rights reserved.
+		</td>
+	</tr>
+</table>

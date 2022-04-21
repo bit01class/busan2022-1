@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<table width="800" align="center" bgcolor="white">
+	<tr>
+		<td><img alt="" src="/web05/imgs/logo.jpg"></td>
+	</tr>
+	<tr>
+		<td bgcolor="gray" align="center">
+		<a href="<%=myPath %>/index.jsp">[HOME]</a>
+		<a href="<%=myPath %>/dept/list.jsp">[DEPT]</a>
+		<a href="<%=myPath %>/emp/list.jsp">[EMP]</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<!-- content start -->
