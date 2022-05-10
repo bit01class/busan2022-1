@@ -8,6 +8,7 @@
 </head>
 <body>
 <%
+request.setCharacterEncoding("utf-8");
 int deptno=Integer.parseInt(request.getParameter("deptno").trim());
 String dname=request.getParameter("dname").trim();
 String loc=request.getParameter("loc").trim();
