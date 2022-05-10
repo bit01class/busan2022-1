@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+window.onload=function(){
+    // _,$
+    console.log(typeof jQuery,typeof $, jQuery===$);
+    // jQuery(css선택자문자열)
+    // $('body>h1+p+h2').css('color','red');
+    //$('h1,h2:eq(2)').css('color','red');
+    //$('ul').children().next().parent().prev().css('color','red');
+    // $('p').filter(function(idx,ele){
+    //     console.log(idx,ele.innerText);
+    //     return ele.innerText=='내용2';
+    // }).css('color','red');
+    //$('li').has('a').css('color','red');
+    //console.log($('h1+p+h2').is('.cl1'));
+    $('p').css('background-color','blue')
+    .add('h1').css('color','red')
+    .end().css('background-color','gray');
+};        
+    </script>
+</head>
+<body>
+    <h1>jquery 선택자</h1>
+    <p>내용</p>
+    <h2>제목1</h2>
+    <p class="cl1">내용1</p>
+    <h2 class="cl1">제목2</h2>
+    <p class="cl1 cl2">내용2</p>
+    <h2 class="cl2">제목3</h2>
+    <p id="id1">내용3</p>
+    <h2>제목4</h2>
+    <p>내용4</p>
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li><a href="#">item3</a></li>
+        <li><a href="#">item4</a></li>
+        <li>item5</li>
+        <li>item6</li>
+    </ul>
+</body>
+</html>

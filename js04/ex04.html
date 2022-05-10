@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        @keyframes ani1{
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+var img,nxt,timout,div;
+var cnt=0;
+var arr=[
+        'https://dummyimage.com/600x400/000/fff.png&text=img01',
+        'https://dummyimage.com/600x400/000/fff.png&text=img02',
+        'https://dummyimage.com/600x400/000/fff.png&text=img03',
+        'https://dummyimage.com/600x400/000/fff.png&text=img04',
+        'https://dummyimage.com/600x400/000/fff.png&text=img05',
+        'https://dummyimage.com/600x400/000/fff.png&text=img06'
+    ];
+function loopImg(){
+        nxt.click();
+    }
+window.onload=function(){
+    
+    div=document.querySelector('div');
+    div.outerHTML='<div></div><a href="#">prev</a><a href="#">next</a>';
+    div=document.querySelector('div');
+    div.innerHTML='<img src="'+arr[cnt]+'">';
+    var prv=document.querySelectorAll('a')[0];
+    nxt=document.querySelectorAll('a')[1];
+    // prv.onclick=prvImg;
+    // nxt.onclick=nxtImg;
+    prv.addEventListener('click',prvImg);
+    nxt.addEventListener('click',nxtImg);
+    img=document.querySelector('div>img');
+    
+    timout=setTimeout(loopImg,3000);
+};
+function prvImg(e){
+    e.preventDefault();// 기본기능 취소(level2~3)
+    cnt--;
+    if(cnt<0)cnt=arr.length-1;
+    img.src=arr[cnt];
+    clearTimeout(timout);
+    timout=setTimeout(loopImg,3000);
+    // return false;// 기본기능 취소(level2)
+}
+function nxtImg(e){
+    e.preventDefault();// 기본기능 취소
+    cnt++;
+    if(cnt==arr.length) cnt=0;
+    // div.innerHTML='<img src="'+arr[cnt]+'">';
+    // img=document.querySelector('div>img');
+    // img.style.animationDuration='2s';
+    // img.style.animationName='ani1';
+    img.src=arr[cnt];
+    clearTimeout(timout);
+    timout=setTimeout(loopImg,3000);
+    // return false;
+}
+
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

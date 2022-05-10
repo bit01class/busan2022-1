@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        span{
+            color: aqua;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+window.onload=function(){
+    // $('span').attr('style','color:red');
+    // console.log($('span').attr('style'));
+    // console.log($('span').css('color'));
+    // console.log($('a').attr('href'));
+    // $('a').attr('href','https://daum.net');
+    // $('span').attr('onclick'
+    // ,'(function(){location.href="https://google.com";})();');
+    // console.log($('form input').attr('type'));
+    // $('form input').attr('type','password');
+    // $('form button').attr('type','reset');
+    // $('form button').removeAttr('type');
+    // $('a').removeAttr('href');
+    console.log($('input').eq(0).prop('readonly'));
+    console.log($('input').eq(1).prop('checked'));
+    console.log($('input').eq(2).prop('checked'));
+    console.log($('input').eq(3).prop('checked'));
+    console.log($('option').eq(0).prop('selected'));
+    console.log($('option').eq(1).prop('selected'));
+    console.log($('option').eq(2).prop('selected'));
+    console.log($('option').eq(3).prop('selected'));
+    $('input').eq(0).removeProp('readonly');
+    $('input').eq(1).prop('checked',true);
+    $('option').eq(3).prop('selected',true);
+
+
+
+
+};
+
+    </script>
+</head>
+<body>
+
+    <p>다음으로 이동<a href="#">link</a></p>
+    <form action="ex13.html" method="get">
+        <div><input type="text" readonly/></div>
+        <div>
+            <input type="checkbox" />item1
+            <input type="checkbox" checked />item2
+            <input type="checkbox" />item3
+        </div>
+        <div><select>
+            <option>item1</option>
+            <option selected>item2</option>
+            <option>item3</option>
+            <option>item4</option>
+        </select></div>
+        <div><button>이동</button></div>
+        <div><textarea>aaaaa</textarea></div>
+    </form>
+    <span>이동</span>
+</body>
+</html>

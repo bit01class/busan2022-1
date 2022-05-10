@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+            .container .row{
+                clear: both;
+                overflow: hidden;
+            }
+            .container .grid1,.container .grid2,.container .grid3,
+            .container .grid4,.container .grid5,.container .grid6,
+            .container .grid7,.container .grid8,.container .grid9,
+            .container .grid10,.container .grid11,.container .grid12{
+                float: left;
+            }
+            @media screen and (max-width:1023px) {
+                /* mobile */
+                .container{
+                    width: 100%;
+                }
+                .container .mgrid1{width: 8.3333%;}
+                .container .mgrid2{width: 16.6666%;}
+                .container .mgrid3{width: 25%;}
+                .container .mgrid4{width: 33.3333%;}
+                .container .mgrid5{width: 41.6666%;}
+                .container .mgrid6{width: 50%;}
+                .container .mgrid7{width: 58.3333%;}
+                .container .mgrid8{width: 66.6666%;}
+                .container .mgrid9{width: 75%;}
+                .container .mgrid10{width: 83.3333%;}
+                .container .mgrid11{width: 91.6666%;}
+                .container .mgrid12{width: 100%;}
+            }
+            @media screen and (min-width:1024px) {
+                /* pc */.container{
+                    width: 1200px;
+                    margin: 0px auto;
+                }
+                .container .grid1{width: 100px;}
+                .container .grid2{width: 200px;}
+                .container .grid3{width: 300px;}
+                .container .grid4{width: 400px;}
+                .container .grid5{width: 500px;}
+                .container .grid6{width: 600px;}
+                .container .grid7{width: 700px;}
+                .container .grid8{width: 800px;}
+                .container .grid9{width: 900px;}
+                .container .grid10{width: 1000px;}
+                .container .grid11{width: 1100px;}
+                .container .grid12{width: 1200px;}
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="mgrid6 grid3">menu1</div>
+                <div class="mgrid6 grid3">menu2</div>
+                <div class="mgrid6 grid3">menu3</div>
+                <div class="mgrid6 grid3">menu4</div>
+            </div>
+        </div>
+    </body>
+</html>

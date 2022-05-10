@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <script type="text/javascript">
+            function func01(){
+                console.log('버튼 클릭');
+            }
+            var h1;
+            function func02(){
+                h1=document.querySelector('h1');
+            }
+            setTimeout(function(){
+                h1.innerText='글자바꾸기';
+            },1000);
+        </script>
+    </head>
+    <body onload="func02();">
+        <h1>이벤트 - DOM Level1 - 인라인방식</h1>
+        <button onclick="func01();">버튼</button>
+    </body>
+</html>

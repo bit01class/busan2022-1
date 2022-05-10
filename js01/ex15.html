@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+// new Object();
+var obj={
+    'key1':'val2'
+    ,'aa':2222
+    ,'arr1':['item1','item2',3333,function(){console.log('배열의func',this);}]
+    ,'func1':function(){
+        console.log(window===this);
+        console.log(window.obj===this);
+        console.log('객체의 기능'+this.aa);
+    }
+    ,'setKey1':function(a){
+        this.key1=a;
+    }
+    ,'getKey1':function(){
+        return this.key1;
+    }
+};
+function func03(){
+    var obj={key1:'val'
+            ,'setKey1':function(a){
+                this.key1=a;
+            }
+            ,'getKey1':function(){
+                return this.key1;
+            }
+    };
+    return {setkey:obj.setKey1,getkey:obj.getKey1};
+}
+var obj3=func03();
+obj3.setkey('edit2');
+console.log(obj3.getkey());
+console.log(obj.aa);
+console.log(obj.arr1[1]);
+obj.arr1[3]();
+obj.func1();
+
+
+function func02(){
+    console.log(this===window);
+}
+// window.func02
+func02();
+        </script>
+    </head>
+    <body></body>
+</html>

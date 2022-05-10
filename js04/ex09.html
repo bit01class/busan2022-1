@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+var xhr,data;
+var callback01=function(){
+    if(xhr.readyState==4 && xhr.status==200){
+        data=xhr.responseXML;
+        var arr=data.children[0].children;
+        var msg='';
+        for(stu of arr){
+            // var num=stu.children[0].childNodes[0].nodeValue;
+            // var name=stu.children[1].childNodes[0].nodeValue;
+            // var kor=stu.children[2].childNodes[0].nodeValue;
+            // var eng=stu.children[3].childNodes[0].nodeValue;
+            // var math=stu.children[4].childNodes[0].nodeValue;
+            // msg+='<tr><td>'+num+"</td><td>"+name+"</td><td>"
+            //     +kor+"</td><td>"+eng+"</td><td>"+math+'</td></tr>';
+            var tr=document.createElement('tr');
+            for(var i=0; i<stu.children.length; i++){
+                var td=document.createElement('td');
+                td.appendChild(document.createTextNode(stu.children[i].childNodes[0].nodeValue));
+                tr.appendChild(td);
+            }
+            document.querySelector('table>tbody').appendChild(tr);
+            // msg+=tr.outerHTML;
+
+        };
+        // document.querySelector('table>tbody').innerHTML=msg;
+    }
+};
+function getList(){
+    xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=callback01;
+    xhr.open('post','ex12.jsp');
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");// post방식 파라미터값전달
+    xhr.send('cnt=3');
+}        
+window.onload=function(){
+    document.querySelector('button').onclick=function(){getList();};
+}
+    </script>
+</head>
+<body>
+    
+    <h1>학생성적관리프로그램</h1>
+    <button>불러오기</button>
+    <table>
+        <thead>
+            <tr>
+                <th>학번</th>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>

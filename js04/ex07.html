@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+console.log('start');
+window.onload=function(){
+    console.log('load...');
+    var url='http://localhost:8080/js04/ex06.html';
+    var xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(e){
+        console.log('event...');
+        if(xhr.readyState==4 && xhr.status==200){
+            document.querySelector('#target').innerHTML=xhr.responseText;
+        }
+    };
+    xhr.open('get',url);
+    xhr.send();
+    console.log('send...');
+};
+console.log('end');
+    </script>
+</head>
+<body>
+    <h1>ajax통신</h1>
+    <p>자바스크립트의 기본통신방식으로</p>
+    <p>비동기 통신을 진행한다.</p>
+    <div id="target"></div>
+</body>
+</html>

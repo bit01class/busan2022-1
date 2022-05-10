@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+window.onload=function(){
+    console.log(jQuery===$,typeof $);
+    console.log($('h1'));
+    console.log($('<h1>test2</h1>'));
+    var h1=document.querySelector('h1');
+    console.log($(h1));
+    console.log($(h1.outerHTML));
+    var arr=['item1','item2','item3','item4'];
+    console.log($(arr).eq(1));
+    var callback1=function(){
+        alert('callback function run...');  
+    };
+    console.log('in load, before callback');
+    $(callback1);
+    console.log('in load, after callback');
+};
+
+    </script>
+</head>
+<body>
+    <h1>test</h1>
+</body>
+</html>

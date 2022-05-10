@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+            body>div{
+                width: 300px;
+                height: 300px;
+                background-color: aqua;
+            }
+            body>div>div{
+                width: 200px;
+                height: 200px;
+                background-color: darksalmon;
+            }
+            body>div>div>div{
+                width: 100px;
+                height: 100px;
+                background-color: chartreuse;
+            }
+        </style>
+        <script type="text/javascript">
+window.onload=function(){
+    var box1=document.querySelector('body>div');
+    var box2=document.querySelector('body>div>div');
+    var box3=document.querySelector("body>div>div>div");
+
+    var mover=function(){
+        console.log('들어옴');
+    };
+    var mout=function(){
+        console.log('빠져나감');
+    };
+    // box1.onmouseover=mover;
+    // box2.onmouseover=mover;
+    // box3.onmouseover=mover;
+    // box1.onmouseout=mout;
+    // box2.onmouseout=mout;
+    // box3.onmouseout=mout;
+    
+    box1.onmouseenter=mover;
+    box2.onmouseenter=mover;
+    box3.onmouseenter=mover;
+    box1.onmouseleave=mout;
+    box2.onmouseleave=mout;
+    box3.onmouseleave=mout;
+    // document.onmousemove=function(event){
+    document.onclick=function(event){
+        // screenX: -490
+        // screenY: 143
+        // offsetX: 506
+        // offsetY: 4
+        // pageX: 506
+        // pageY: 4
+        console.log(event.pageX,event.pageY,event.screenX,event.screenY);
+    };
+};            
+        </script>
+    </head>
+    <body>
+        <div>
+            box1
+            <div>
+                box2
+                <div>
+                    box3
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

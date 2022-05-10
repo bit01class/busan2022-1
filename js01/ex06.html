@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+            var a=-1;
+            if(a>0){
+                console.log('0보다 크다');
+            }else if(a<0){
+                console.log('0보다 작다');
+            }else{
+                console.log('0이다');
+            }
+            console.log('--------------------------');
+            var b=0;
+            switch(b){  // ===
+                case '1':console.log('1입니다');break;
+                case 1-1:console.log('0입니다');break;
+                case true:console.log('-1입니다');break;
+                default : console.log('몰라');
+            }
+            console.log('--------------------------');
+            //삼항연산자 -> 조건
+            // 조건?true:false;
+            b==0?console.log('참실행'):console.log('거짓 실행');
+            var c=b>0?1:-1;
+            console.log(c);
+            console.log('--------------------------');
+            var i=1;
+            for(i=0; i<5; i++){
+                console.log('for i='+i);
+            }
+            console.log(i);
+            console.log('--------------------------');
+            
+            while(i<5){
+                console.log('while i='+i);
+                i++;
+            }
+            console.log('--------------------------');
+            var i=0;
+            do{
+                console.log("do i="+i);
+                i++;
+            }while(i<5);
+        </script>
+    </head>
+    <body></body>
+</html>

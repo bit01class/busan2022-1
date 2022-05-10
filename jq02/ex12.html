@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="css/jquery.bxslider.min.css"> -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <script>
+var option={
+    // mode:'vertical'
+    // speed:500
+    // slideMargin:10
+    // startSlide:2
+    // randomStart:true
+    slideWidth:600,
+    minSlides:2,
+    maxSlides:3,
+    moveSlides:1,
+    // auto:true,
+    pause:2000,
+    // nextText:'다음',
+    // prevText:'이전',
+    autoControls:true,
+    nextSelector: 'button:eq(1)',
+    prevSelector: 'button:eq(0)',
+    // pagerType: 'short',pagerShortSeparator:'@'
+    pagerSelector: 'button:eq(2)'
+};        
+        $(document).ready(function(){
+          $('.slider').bxSlider(option);
+        });
+    </script>
+</head>
+<body>
+    <div class="slider">
+        <div><img src="https://dummyimage.com/600x400/000/fff.png&text=image01" title="img01" /></div>
+        <div><img src="https://dummyimage.com/600x400/000/fff.png&text=image02" title="img02" /></div>
+        <div><img src="https://dummyimage.com/600x400/000/fff.png&text=image03" title="img03" /></div>
+        <div><img src="https://dummyimage.com/600x400/000/fff.png&text=image04" title="img04" /></div>
+        <div><img src="https://dummyimage.com/600x400/000/fff.png&text=image05" title="img05" /></div>
+        <div><img src="https://dummyimage.com/600x400/000/fff.png&text=image06" title="img06" /></div>
+    </div>
+    <button>prev</button>
+    <button>next</button>
+    <button>여기</button>
+</body>
+</html>

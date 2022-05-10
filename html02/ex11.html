@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+    form{
+        width: 300px;
+        background-color: aqua;
+    }
+    form>div>label:first-child{
+        display: inline-block;
+        width: 100px;
+        background-color: gray;
+    } 
+    form>div>input:last-child{
+        width: 190px;
+        border: 0px;
+    }
+    form>div>input:checked+label{
+        width: 50px;
+        display: inline-block;
+        text-decoration: line-through;
+    }
+    form>div>select{
+        background-color: red;
+        border: 3px solid white;
+    }
+    textarea{
+        width: 290px;
+        border: 3px solid white;
+    }
+    form>div:last-child{
+        text-align: center;
+    }
+    form button{
+        /* background-color: gray; */
+    }
+
+        </style>
+    </head>
+    <body>
+        <h1>회원가입</h1>
+        <form>
+            <div>
+                <label>id</label><input type="text"/>
+            </div>
+            <div>
+                <label>pw</label><input type="password"/>
+            </div>
+            <div>
+                <input type="checkbox"/>
+                <label>item1</label>
+                <input type="checkbox"/>
+                <label>item2</label>
+                <input type="checkbox"/>
+                <label>item3</label>
+            </div>
+            <div>
+                <input type="radio" name="ra"/>
+                <label>item1</label>
+                <input type="radio" name="ra"/>
+                <label>item2</label>
+                <input type="radio" name="ra"/>
+                <label>item3</label>
+            </div>
+            <div>
+                <select>
+                    <option>item1</option>
+                    <option>item2</option>
+                    <option>item3</option>
+                    <option>item4</option>
+                </select>
+            </div>
+            <div>
+                <textarea></textarea>
+            </div>
+            <div>
+                <button>submit</button>
+                <button type="reset">reset</button>
+            </div>
+        </form>
+    </body>
+</html>

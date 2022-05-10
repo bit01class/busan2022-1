@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+var a=1234;
+var b=new Number(1234);
+var c=new Number(1234);
+console.log(a==b,a===b);
+console.log(a==c,a===c);  
+console.log(b==c,b===c);     
+console.log("-----------------------------------");
+var d="abc";
+var e='abc';
+var f=`abc`;
+var g=new String();
+console.log(d,e,f,"->"+g+"<-");
+var h=new String('abc');
+var k=new String('abc');
+console.log(d==e,d===e);
+console.log(d==h,d===h);
+console.log(h==k,h===k);
+console.log(d.length);
+console.log("4"+2,"4"-2);
+console.log("1,000원"+1,'1,000원'-1);
+console.log(parseInt("1,000원")+1,parseFloat('1,000원')-1);
+        </script>
+    </head>
+    <body></body>
+</html>

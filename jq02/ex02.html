@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        #target{
+            overflow: hidden;
+            width: 600px;
+            height: 400px;
+        }
+        #target>ul{
+            list-style:none;
+            width: 4200px;
+            padding: 0px;
+            margin-left: -600px;
+        }
+        #target>ul>li{
+            float: left;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+var li;
+function nextImg(){
+    if(li.width()-100>=0){
+        li.width(li.width()-100);
+        setTimeout(nextImg,100);
+    }else{
+        li.width(600);
+        li.next().appendTo('#target>ul');
+        setTimeout(nextImg,1000);
+    }
+}
+$(function(){
+    li=$('<li></li>').prependTo('#target>ul').width(600).height(400);
+    setTimeout(nextImg,100);
+});
+    </script>
+</head>
+<body>
+    <div id="target">
+        <ul>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image01" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image02" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image03" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image04" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image05" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image06" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

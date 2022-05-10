@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+var arr=['item1','item2','item3','item4'];
+$(function(){
+    //$(document.querySelector('ul')).clone().insertAfter('ul');
+    arr.forEach(function(a,b){
+        console.log(a,b,this);
+    });
+    console.log('--------------------------------------');
+    $(arr).each(function(a,b){
+        console.log(a,b==this);
+    });
+    console.log('--------------------------------------');
+    $('li').each(function(idx,ele){
+        console.log(ele,this);
+        $(this).html('<img src="https://dummyimage.com/100x50/000/fff.png&text=image0'+(idx+1)+'" />');
+    });
+});
+
+    </script>
+</head>
+<body>
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+        <li>item5</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+var xhr,data;
+var callback01=function(){
+    if(xhr.readyState==4 && xhr.status==200){
+        data=xhr.responseText;
+        data=data.replaceAll('students','table')
+            .replaceAll('student','tr')
+            .replaceAll('num','td')
+            .replaceAll('name','td')
+            .replaceAll('kor','td')
+            .replaceAll('eng','td')
+            .replaceAll('math','td')
+            ;
+        var temp=document.createElement('div');
+        temp.innerHTML=data;
+        document.querySelector('tbody').innerHTML=temp.querySelector('table').innerHTML;
+    }
+};
+function getList(){
+    xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=callback01;
+    xhr.open('get','ex08.xml');
+    xhr.send();
+}        
+window.onload=function(){
+    document.querySelector('button').onclick=function(){getList();};
+}
+    </script>
+</head>
+<body>
+    <h1>학생성적관리프로그램</h1>
+    <button>불러오기</button>
+    <table>
+        <thead>
+            <tr>
+                <th>학번</th>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>

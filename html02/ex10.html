@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+    body{
+        background-image: url(imgs/bg.jpg);
+        background-repeat: repeat-x;
+    }
+    h2{
+        background-image: url(imgs/logo.jpg);
+        width: 205px;
+        height: 42px;
+        background-color: aqua;
+        text-indent: -9999px;
+    } 
+    img{
+        width: 100%;
+    }  
+    h1{
+        background-color: aqua;
+        width: 200px;
+        /* border: 5px solid gray; */
+        border-radius: 20px;
+    }   
+    div+img{
+        border-radius: 30px 10px 0px 20px;
+    }  
+    a{
+        border: 1px solid gray;
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: black;
+        text-align: center;
+        line-height: 30px;
+    }
+    form{
+        display: inline-block;
+        width: 100px;
+    }
+    form>button{
+        border-width: 0px;
+        text-decoration: underline;
+    }
+    form>button:hover{
+        cursor: pointer;
+    }
+        </style>
+    </head>
+    <body>
+        <h1>이미지 처리</h1>
+        <div>
+            <img src="imgs/logo.jpg"/>
+        </div>
+        <div>
+            <h2>이미지</h2>
+        </div>
+        <img src="imgs/index.png"/>
+        <a href="#">입력</a>
+        <form>
+            <button>입력2</button>
+        </form>
+    </body>
+</html>

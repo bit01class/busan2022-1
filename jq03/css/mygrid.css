@@ -1,0 +1,42 @@
+.container{
+    width: 1200px;
+    margin: 0px auto;
+}
+.containerw{
+    width: 100%;
+}
+.row .grid1,.row .grid2,.row .grid3,
+.row .grid4,.row .grid5,.row .grid6,
+.row .grid7,.row .grid8,.row .grid9,
+.row .grid10,.row .grid11,.row .grid12{
+    float: left;
+}
+.container .row,.containerw .row{
+    clear: both;
+    overflow: hidden;
+}
+.container .grid1{width: 100px;}
+.container .grid2{width: 200px;}
+.container .grid3{width: 300px;}
+.container .grid4{width: 400px;}
+.container .grid5{width: 500px;}
+.container .grid6{width: 600px;}
+.container .grid7{width: 700px;}
+.container .grid8{width: 800px;}
+.container .grid9{width: 900px;}
+.container .grid10{width: 1000px;}
+.container .grid11{width: 1100px;}
+.container .grid12{width: 1200px;}
+
+.containerw .grid1{width: 8.3333%;}
+.containerw .grid2{width: 16.6666%;}
+.containerw .grid3{width: 25%;}
+.containerw .grid4{width: 33.3333%;}
+.containerw .grid5{width: 41.6666%;}
+.containerw .grid6{width: 50%;}
+.containerw .grid7{width: 58.3333%;}
+.containerw .grid8{width: 66.6666%;}
+.containerw .grid9{width: 75%;}
+.containerw .grid10{width: 83.3333%;}
+.containerw .grid11{width: 91.6666%;}
+.containerw .grid12{width: 100%;}

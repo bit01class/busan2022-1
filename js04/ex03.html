@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+   var btns;
+   var input;     
+window.onload=function(){
+    btns=document.querySelectorAll('button');
+    input=document.querySelector('input');
+    var select=document.querySelector('select');
+    var callback01=function(e){
+        console.log('event 발생',e.type,this.value);
+        input.focus();
+    };
+    btns[0].addEventListener('click',callback01);
+    // btns[0].addEventListener('dblclick',callback01);
+    // btns[0].addEventListener('mousedown',callback01);
+    // btns[0].addEventListener('mouseup',callback01);
+    // btns[0].addEventListener('mouseover',callback01);
+    // btns[0].addEventListener('mouseout',callback01);
+    // btns[0].addEventListener('mouseenter',callback01);
+    // btns[0].addEventListener('mouseleave',callback01);
+    // btns[0].addEventListener('mousemove',callback01);
+    // input.addEventListener('keydown',callback01);
+    // input.addEventListener('keypress',callback01);
+    // input.addEventListener('keyup',callback01);
+    // select.addEventListener('change',callback01);
+    // input.addEventListener('focus',callback01);
+    // input.addEventListener('blur',callback01);
+    // input.addEventListener('focusin',callback01);
+    // input.addEventListener('focusout',callback01);
+    // document.addEventListener('scroll',callback01);
+    var callback02=function(e){
+        console.log(e.target.innerHTML);
+    };
+    var callback03=function(e){
+        btns[1].removeEventListener('click',callback02);
+    };
+    var callback04=function(e){
+        console.log('단 한번 수행하는 이벤트');
+        this.removeEventListener('click',callback04);
+    }
+    btns[1].addEventListener('click',callback02);
+    btns[2].addEventListener('click',callback03);
+    btns[3].addEventListener('click',callback04);
+};
+    </script>
+</head>
+<body>
+    <h1>event</h1>
+    <button>btn1</button>
+    <button>btn2</button>
+    <button>btn3</button>
+    <button>btn4</button>
+    <input type="text"/>
+    <select>
+        <option>item1</option>
+        <option>item2</option>
+        <option>item3</option>
+        <option>item4</option>
+    </select>
+    <div>box</div>
+</body>
+</html>

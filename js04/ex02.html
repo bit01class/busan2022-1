@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        h1{
+            color: red;
+        }
+    </style>
+    <script type="text/javascript">
+var h1
+window.onload=function(){
+    h1=document.querySelector('h1');
+    console.log('level2의 로딩');
+    var btn=document.querySelector('button');
+    btn.addEventListener('click',function(){console.log('level3');});
+    btn.onclick=function(){console.log('level2');};
+    console.log(h1.attributes[0].nodeValue);
+    
+};
+// window.addEventListener('load',function(){
+//     console.log('level3의 로딩');
+// });
+// window.onload=function(){
+//     console.log('level2의 로딩2');
+// };
+// window.addEventListener('load',function(){
+//     console.log('level3의 로딩2');
+// });
+function func01(){};
+    </script>
+</head>
+<body>
+    <h1 msg="test" style="background-color: gray;">이벤트 선택</h1>
+    <button onclick="func01();">버튼</button>
+</body>
+</html>

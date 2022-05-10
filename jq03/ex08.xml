@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <row>
+        <col1>1</col1>
+        <col2>name1</col2>
+    </row>
+    <row>
+        <col1>2</col1>
+        <col2>name2</col2>
+    </row>
+    <row>
+        <col1>3</col1>
+        <col2>name3</col2>
+    </row>
+</root>

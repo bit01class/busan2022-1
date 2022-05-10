@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+h1{
+    color: red;
+    background-color: aqua;
+}
+p+div{
+    color:#ff0000;
+    background-color: #0000ff;
+}
+p+div+div{
+    color:rgb(0,255,0);
+    background-color: rgb(255,255,0);
+    opacity: 0;
+}
+p+div+div+div{
+    background-color: rgba(0,0,255,0);
+}
+p+div+div+div+div{
+    background-color: rgb(0,0,255);
+    visibility: hidden;
+}
+p+div+div+div+div+div+div{
+    background-color: rgb(0,0,255);
+    display: none;
+}
+
+
+        </style>
+    </head>
+    <body>
+        <h1>css 스타일</h1>
+        <p>스타일제어</p>
+        <div>box1</div>
+        <div>box2
+            <ul><li>child2</li></ul>
+        </div>
+        <div>box3</div>
+        <div>box4
+            <ul><li>child4</li></ul>
+        </div>
+        <div>box5</div>
+        <div>box6
+            <ul><li>child6</li></ul>
+        </div>
+        <div>box7</div>
+    </body>
+</html>

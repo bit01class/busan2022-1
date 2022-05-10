@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+            //var a='-1';
+            // var a=-1;   // number 0이면 false
+            // var a='aa';       // number length==0 이면 false
+            // var a=new Date();    // null 이면 false
+            var a;                  //undefined 이면 false
+            if(a){
+                console.log('참');
+            }else{
+                console.log('거짓');
+            }
+            console.log('--------------------------');
+            var b=0;
+            switch(b){  // ===
+                case true:console.log('1입니다');break;
+                case a:console.log('0입니다');break;
+                case false:console.log('-1입니다');break;
+                default : console.log('몰라');
+            }
+            console.log('--------------------------');
+            //삼항연산자 -> 조건
+            // 조건?true:false;
+            a?console.log('참실행'):console.log('거짓 실행');
+            var c=b>0?1:-1;
+            console.log(c);
+            console.log('--------------------------');
+            var i=1;
+            for(i=0; i<5; i++){
+                console.log('for i='+i);
+            }
+            console.log(i);
+            console.log('--------------------------');
+            
+            while(i<5){
+                console.log('while i='+i);
+                i++;
+            }
+            console.log('--------------------------');
+            var i=0;
+            do{
+                console.log("do i="+i);
+                i++;
+            }while(i<5);
+        </script>
+    </head>
+    <body></body>
+</html>

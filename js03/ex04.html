@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+            .cl01{
+                background-color: aqua;
+            }
+            .cl02{
+                color: red;
+            }
+            .cl03{
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="cl02">회원가입</h1>
+        <form>
+            <div>
+                <label>id</label>
+                <input type="text"/>
+            </div>
+            <div>
+                <label>pw</label>
+                <input type="password"/>
+            </div>
+            <div>
+                <input type="radio" name="ra"/>
+                <label>item1</label>
+                <input type="radio" name="ra"/>
+                <label>item2</label>
+                <input type="radio" name="ra"/>
+                <label>item3</label>
+            </div>
+            <div>
+                <select>
+                    <option>선택하세요</option>
+                </select>
+            </div>
+            <div>
+                <button>전송</button>
+            </div>
+        </form>
+        <div>outter</div>
+        <script type="text/javascript">
+document
+    .querySelector('form')
+    .querySelectorAll('div>label:first-child')
+    .forEach(function(ele,idx){
+        ele.className='cl0'+(idx+1);
+    });
+
+    var arr=['item1','item2','item3','item4'];
+
+    for(var i=0; i<arr.length; i++){
+        console.log(arr[i]);
+    }
+    console.log('----------------------------------------');
+    var callback01=function(a){
+        console.log('반복',a);
+    };
+    arr.forEach(callback01);    // a(ele),b(idx),c(this)
+    console.log('----------------------------------------');
+    for(var idx in arr){
+        console.log(arr[idx]);
+    }
+    console.log('----------------------------------------');
+    for(var ele of arr){
+        console.log(ele);
+    }
+
+    var sel=document.querySelector('select');
+    sel.querySelectorAll('option').forEach(function(ele){
+        sel.removeChild(ele);
+    });
+    var arr2=['item1','item2','item3','item4'];
+    arr2.forEach(function(ele){
+        var opt=document.createElement('option');
+        opt.appendChild(document.createTextNode(ele));
+        sel.appendChild(opt);
+    });
+        </script>
+    </body>
+</html>

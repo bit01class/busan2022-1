@@ -1,0 +1,1 @@
+document.write("외부에서 가져온 실행");

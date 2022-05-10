@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+    </head>
+    <body>
+        <div>
+            <ul>
+                <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img01"/></li>
+                <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img02"/></li>
+                <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img03"/></li>
+                <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img04"/></li>
+                <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img05"/></li>
+                <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img06"/></li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            var ul=document.querySelector('ul');
+            var imgs=ul.querySelectorAll('img');
+            // var arr=[];
+            // imgs.forEach(function(ele){
+            //     arr.push(ele.src);
+            // });
+            var arr=['img01','img02','img03','img04','img05','img06'];
+            var cnt=0;
+            function loopImg2(){
+                ul.innerHTML='<li><img src="https://dummyimage.com/600x400/000/fff.png&text='+arr[cnt]+'"/></li>';
+                if(cnt++==5){cnt=0};
+            }
+
+            // function loopImg1(){
+            //     var img=arr.shift();
+            //     ul.innerHTML='<li><img src="'+img+'"/></li>';
+            //     arr.push(img);
+            //     setTimeout(loopImg1,1000);
+            // }
+            // loopImg1();
+        </script>
+    </body>
+</html>

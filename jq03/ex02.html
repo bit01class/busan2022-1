@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        body>div{
+            width: 600px;
+            margin: 0px auto;
+        }
+        #bx img{
+            width: 200px;
+        }
+        .bx-prev,.bx-next{
+            background-color: rgba(255,255,255,0.5);
+            position: relative;
+            top:-350px;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 42px;
+            text-decoration: none;
+            font-size: 30pt;
+            font-weight: bold;
+            color: black;
+        }
+        .bx-prev{
+        }
+        .bx-next{
+            left: 500px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+        var bx;
+$(function(){
+    bx=$('#bx').bxSlider({
+        slideWidth:200,
+        minSlides:3,
+        maxSlides:3,
+        moveSlides:1,
+        // auto:true,
+        onSliderLoad:function(cur){
+            $('#target').html($('li').eq(0+3).html());
+        },
+        onSlideNext:function(a,b,c){
+            $('#target').html(a.html());
+        }
+    });
+    $('.bx-prev,.bx-next').text('<').next().text('>');
+});        
+    </script>
+</head>
+<body>
+    <div>
+        <div id="target"></div>
+        <ul id="bx">
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image01" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image02" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image03" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image04" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image05" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image06" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+            #target{
+                background-image: url(imgs/car.jpg);
+                width: 200px;
+                height: 148px;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+            }
+        </style>
+        <script type="text/javascript">
+window.onload=function(){
+ var target=document.querySelector('#target');
+ target.style.left='0px';
+ target.style.top='0px';
+ document.onclick=function(e){
+    console.log(e.clientX,e.clientY);
+    target.style.left=e.clientX-100+'px';
+    target.style.top=e.clientY-74+'px';
+ }
+ window.onkeydown=function(e){
+     if(e.keyCode==39){
+         target.style.left=parseInt(target.style.left)+10+'px';
+     }else if(e.keyCode==37){
+         target.style.left=parseInt(target.style.left)-10+'px';
+     }else if(e.keyCode==38){
+         target.style.top=parseInt(target.style.top)-10+'px';
+     }else if(e.keyCode==40){
+         target.style.top=parseInt(target.style.top)+10+'px';
+     }
+ };
+};            
+        </script>
+    </head>
+    <body>
+        <div id="target"></div>
+    </body>
+</html>

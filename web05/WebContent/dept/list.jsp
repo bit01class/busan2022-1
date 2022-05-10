@@ -36,8 +36,9 @@ String myPath="..";
 				db=client.getDatabase("testDB");
 				MongoCollection<Document> coll=null;
 				coll=db.getCollection("dept02");	
-				System.out.println("총갯수:"+coll.count());
-				FindIterable<Document> ite=coll.find().skip(5*(p-1)).limit(5);
+				System.out.println("총갯수1:"+coll.count());
+				System.out.println("총갯수2:"+coll.countDocuments());
+				FindIterable<Document> ite=coll.find();//.skip(5*(p-1)).limit(5);
 				MongoCursor<Document> cursor=ite.iterator();
 				while(cursor.hasNext()){
 					Document obj= cursor.next();

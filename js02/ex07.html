@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+var a='1111';
+console.log(window.parseInt(a));
+window.console.log('로그메시지');
+window.console.error('에러메시지');
+// var result1=window.alert('창을\n 띄웁니다');
+// var result2=window.confirm('삭제하시겠습니까?');
+// var result3=window.prompt('입력하세요','기본값');
+// console.log('after',result1,result2,result3);
+var num=0;
+var callback1=function(){
+    num++;
+    console.log('num:'+num);
+    inter2=window.setTimeout(callback1,1000);
+    if(num==5){
+        //window.clearInterval(inter1);
+        window.clearTimeout(inter2);
+    }else{
+        //window.setTimeout(callback1,1000);
+    }
+}
+//var inter1=window.setInterval(callback1,1000);
+var inter2=window.setTimeout(callback1,1000);
+        </script>
+    </head>
+</html>

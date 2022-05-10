@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+window.onload=function(){
+    var body=document.querySelector('body');
+    var h1=document.querySelector('h1');
+    var btn=document.querySelector('button');
+    // body.onclick=func01;
+    // btn.onmousedown=function(){
+    //     console.log('down');
+    // };
+    // btn.onmouseup=function(){
+    //     console.log('up');
+    // };
+    // h1.onmouseover=function(){
+    //     console.log('위로');
+    // };
+    // h1.onmouseout=function(){
+    //     console.log('밖으로');
+    // };
+    h1.onmouseenter=function(){
+        console.log('위로');
+    };
+    h1.onmouseleave=function(){
+        console.log('밖으로');
+    };
+
+};
+
+function func01(){
+    console.log('버튼 클릭');
+}
+        </script>
+    </head>
+    <body>
+        <h1>마우스 이벤트</h1>
+        <button>버튼</button>
+    </body>
+</html>

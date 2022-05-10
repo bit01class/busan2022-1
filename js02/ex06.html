@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+function Func1(){
+    this.num1=1111;
+    this.func=function(){console.log('메서드');};
+    console.log('실행',this);
+}
+
+//Func1();
+console.log(window.num1);
+var obj1=new Func1();
+console.log(obj1.num1);
+obj1.func();
+
+        </script>
+    </head>
+    <body></body>
+</html>

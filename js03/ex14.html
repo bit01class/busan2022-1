@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+var ev;
+window.onload=function(){
+    var alink=document.querySelector('p>a');
+    var form=document.querySelector('form');
+    var btns=form.querySelectorAll('button');
+    
+    var div1=form.querySelector('div:first-child').innerHTML;
+
+    var labels=document.querySelectorAll('div>label');
+    var inputs=form.querySelectorAll('div>input');
+    // inputs[1].onfocus=function(){
+    //     inputs[1].value='';
+    // };
+    var select=document.querySelector('select');
+    select.onclick=function(){
+        this.innerHTML='<option>item1</option><option>item2</option><option>item3</option><option>item4</option>';
+    };
+    form.querySelectorAll('button')[2].onclick=function(){
+        history.back();
+    };
+
+
+
+    function myfocus(e){
+        e.target.nextElementSibling.focus();
+    };
+    labels[0].onclick=myfocus;
+    labels[1].onclick=myfocus;
+
+    alink.onclick=function(){
+        alert('페이지 이동');
+        return false;
+    };
+
+    // document.querySelector('div:nth-child(2)>input').onblur=function(){
+    //     console.log('포커스를 잃었을때');
+    // };
+    document.querySelector('div:nth-child(2)>input').onblur=function(){
+        console.log('포커스를 잃었을때');
+    };
+
+    form.onsubmit=function(){
+        
+
+        var id=form.querySelector('div:first-child>input');
+        if(!id.value){
+            form.querySelector('div:first-child').innerHTML=div1;
+            id=form.querySelector('div:first-child>input');
+            id.outerHTML=id.outerHTML+"<span>비었습니다</span>";
+            return false;
+        }else if(id.value.length<4){
+            form.querySelector('div:first-child').innerHTML=div1;
+            id=form.querySelector('div:first-child>input');
+            id.outerHTML=id.outerHTML+"<span>4자 이상</span>";
+            return false;
+        }else if(id.value.indexOf('@')<1){
+            form.querySelector('div:first-child').innerHTML=div1;
+            id=form.querySelector('div:first-child>input');
+            id.outerHTML=id.outerHTML+"<span>이메일형식이아닙니다</span>";
+            return false;
+        }
+    };
+};            
+        </script>
+    </head>
+    <body>
+        <h1>회원가입</h1>
+        <p>링크:<a href="https://google.com">이동</a></p>
+        <form action="http://naver.com">
+            <div>
+                <label>id</label>
+                <input type="text"/>
+            </div>
+            <div>
+                <label>pw</label>
+                <input type="text"/>
+            </div>
+            <div>
+                <input type="radio" name="ra"/>
+                <label>item1</label>
+                <input type="radio" name="ra"/>
+                <label>item2</label>
+                <input type="radio" name="ra"/>
+                <label>item3</label>
+            </div>
+            <div>
+                <select>
+                    <option>선택하세요</option>
+                </select>
+            </div>
+            <div>
+                <textarea></textarea>
+            </div>
+            <div>
+                <button type="submit">입력</button>
+                <button type="reset">취소</button>
+                <button type="button">뒤로</button>
+            </div>
+        </form>
+    </body>
+</html>

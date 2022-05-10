@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+            body>*{
+                width: 500px;
+                border: 1px solid gray;
+                margin: 0px auto 0px auto;
+            }
+            nav{
+                background-color: gray;
+                text-align: center;
+            }
+            nav>a{
+                color: white;
+                text-decoration: none;
+                border-left: 1px solid white;
+                padding: 5px;
+            }
+            nav>a:last-child{
+                border-right: 1px solid white;
+            }
+
+            nav>a:hover{
+                color: yellow;
+            }
+
+
+
+            section,aside{
+                display: inline-block;
+                height: 100px;
+            }
+            section{
+                width: 300px;
+            }
+            aside{
+                width: 194px;
+            }
+            aside>a{
+                display: block;
+            }
+            aside>a>img{
+                width: 100%;
+            }
+            footer{
+                margin-top: 50px;
+                border-top: 3px double gray;
+                text-align: center;
+                height: 100px;
+                padding-top: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+        <header>
+            <img src="imgs/logo.jpg">
+        </header>
+        <nav>
+            <a href="ex07.html">HOME</a>
+            <a href="ex01.html">EX01</a>
+            <a href="ex02.html">EX02</a>
+            <a href="ex03.html">EX03</a>
+        </nav>
+        <section>
+            <h1>Semantic Elements in HTML</h1>
+            <p>The World Wide Fund for Nature (WWF) is an international organization working on issues regarding the conservation, research and restoration of the environment, formerly named the World Wildlife Fund. WWF was founded in 1961.</p>
+        </section>
+        <aside>
+            <a href="http://google.com"><img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"></a>
+            <a href="http://daum.net"><img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png"/></a>
+        </aside>
+        <footer>
+            <address>서울특별시 서초구 서초대로74길33 비트빌 3층</address>
+            Copyright by bitacademy co.ltd. All rights reserved.
+        </footer>
+        </div>
+    </body>
+</html>

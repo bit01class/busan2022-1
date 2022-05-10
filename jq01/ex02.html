@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        h1{
+            background-color: aqua;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+window.onload=function(){
+    // document.querySelector('h1').style.backgroundColor='red';
+    // console.log(document.querySelector('h1').style.color);
+    $('h1')
+    .css('border-bottom','1px solid blue')
+    .css('color','red');
+    console.log($('h1').css(['background-color','color']));
+    $('li').css('background-color',function(idx,val){
+        var arr=['red','yellow','blue','green','white'];
+        console.log(idx,val);
+        return arr[idx];
+    });
+    $('h2').css({
+    color:'red'
+    ,backgroundColor:'yellow'
+    });
+};  
+    </script>
+</head>
+<body>
+    <h1>style css</h1>
+    <p>내용</p>
+    <h2>제목</h2>
+    <p>내용</p>
+    <div>
+        <h2>제목</h2>
+        <p>내용</p>
+    </div>
+    <div>
+        <ul>
+            <li><a href="#">menu1</a></li>
+            <li><a href="#">menu2</a></li>
+            <li><a href="#">menu3</a></li>
+            <li><a href="#">menu4</a></li>
+            <li><a href="#">menu5</a></li>
+        </ul>
+    </div>
+</body>
+</html>

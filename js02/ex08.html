@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+var win;
+function newWindow(){
+    win=window.open("https://m.naver.com","ex08","width=400,height=400,top=500,left=-1920");
+}
+function newClose(){
+    win.close();
+}
+function newMove(){
+    win.moveBy(300,300);
+}
+        </script>
+    </head>
+    <body>
+        <h1>부모창</h1>
+        <button onclick="newWindow();">새창</button>
+        <button onclick="newClose();">창닫기</button>
+        <button onclick="newMove();">이동</button>
+    </body>
+</html>

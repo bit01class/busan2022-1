@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">  
+window.onload=function(){
+    console.log('js',$('h1').text());
+};      
+// $(window).load(function(){
+//     console.log('load',$('h1').text());
+// });
+// $(window).ready(function(){
+//     console.log('window ready',$('h1').text());
+// });
+$(function(){
+    console.log('$(function1)',$('h1').text());
+});
+$(document).ready(function(){
+    console.log('document ready1',$('h1').text());
+});
+$(document).ready(function(){
+    console.log('document ready2',$('h1').text());
+    $(function(){
+        console.log('레디였기에 바로 실행');
+    });
+});
+$(document).on('ready',function(){
+
+});
+$(function(){
+    console.log('$(function2)',$('h1').text());
+});
+    </script>
+</head>
+<body>
+    <h1>event</h1>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+function func1(){
+    var arr=arguments;
+    console.log(arr.length);
+}   
+func1(1,2,4,6,8);  
+console.log('-----------------------------');
+var key1='no';
+var obj1={
+    'func':function(a,b,c){
+        console.log(key1, this.key1,a,b,c);
+    }
+};  
+var obj2={'key1':'edit1'};    
+obj1.func.call(obj2,'나도','너도');
+console.log('-----------------------------');
+var obj3={
+    'func':function(a,b,c){
+        console.log(key1, this.key1,a,b,c);
+    }
+};  
+var obj4={'key1':'edit1'};    
+obj3.func.apply(obj4,['add1','add2']);
+        </script>
+    </head>
+    <body></body>
+</html>

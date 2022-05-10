@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+            /*
+           선택자의 우선순위: 태그선택자<클래스선택자<아이디선택자<인라인
+            */
+            #id02{
+                color: green;
+            }
+            .cl03{
+                color: red;
+            }
+            h2{
+                color: blue;
+            }
+        </style> 
+    </head>
+    <body>
+        <h1>css 선택자</h1>
+        <p class="cl03">내용</p>
+        <h2>태그<a href="#">선택자</a>1</h2>
+        <p>태그이름</p>
+        <h2 id="id02">아이디선택자2</h2>
+        <p>#아이디명</p>
+        <p>특정아이디는 한문서에서 유일, 따라서 중복 불가능</p>
+        <h2 class="cl03">클래스<a href="#">선택자</a>3</h2>
+        <p>.클래스명</p>
+        <p>한문서에서 여러번 부여가능</p>
+        <p>엘리먼트의 종류가 서로 다를지라도 부여가능</p>
+        <h2 class="cl03">클래스선택자4</h2>
+        <p>내용</p>
+        <ul>
+            <li>abcd<a href="#">link</a>efg</li>
+            <li>abcd<a href="#">link</a>efg</li>
+            <li>abcd<a href="#">link</a>efg</li>
+            <li>abcd<a href="#">link</a>efg</li>
+            <li>abcd<a href="#">link</a>efg</li>
+            <li>abcd<a href="#">link</a>efg</li>
+        </ul>
+    </body>
+</html>

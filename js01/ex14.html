@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+            
+
+            console.log(typeof func01);
+            window.func01();
+            func02=func01;
+
+            function func01(){
+                console.log('func01 run..');
+            }
+
+            function func03(a){
+                // callback 함수
+                a();
+            }
+
+            // func03(func02);
+
+            function func04(){
+                // 클로저 - 변수의 라이프사이클을 뛰어넘어섬
+                var z=1111;
+                return (function(){
+                    console.log('지역변수에서 선언된 함수'+z);
+                    return z;
+                })();
+            }
+
+            var after=func04;
+            var z=2222;
+            var w=after();
+            console.log(w,z);
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
+
+
+
+
+
+
+
+

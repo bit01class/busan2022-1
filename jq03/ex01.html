@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var callback1=function(ele,oldIdx,newIdx){
+                console.log('onSlideBefore',ele.html(),oldIdx,newIdx);
+            };
+            
+            var callback2=function(ele,oldIdx,newIdx){
+                console.log('onSlideAfter',ele.html(),oldIdx,newIdx);
+            };
+            
+            var callback3=function(ele,oldIdx,newIdx){
+                console.log('onSlideNext',ele.html(),oldIdx,newIdx);
+            };
+            
+            var callback4=function(ele,oldIdx,newIdx){
+                console.log('onSlidePrev',ele.html(),oldIdx,newIdx);
+            };
+            $('#bx').bxSlider({
+                // randomStart:true,
+                onSliderLoad:function(cur){
+                                    console.log(cur);
+                                },
+
+                onSliderResize:function(){
+                                    console.log('resize');
+                                },
+                onSlideBefore:callback1,
+                onSlideAfter:callback2,
+                onSlideNext:callback3,
+                onSlidePrev:callback4
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>callback</h1>
+    <div>
+        <ul id="bx">
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image01" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image02" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image03" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image04" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image05" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image06" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

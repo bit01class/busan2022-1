@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+    </head>
+    <body>
+        <h1>DOM 제어</h1>
+        <div id="target"></div>
+
+        <script type="text/javascript">
+function newEle(tagName,txt){
+    var ele=document.createElement(tagName);
+    ele.appendChild(document.createTextNode(txt));
+    return ele;
+}
+// function appendUl(ul,txt){
+//     ul.appendChild(newEle('li',txt));
+// }
+// appendUl(ul,'add1');
+// appendUl(ul,'add2');
+// appendUl(ul,'add3');
+
+var ul=document.createElement('ul');
+ul.appendUl=function (txt){
+    this.appendChild(newEle('li',txt));
+    return this;
+};
+ul
+    .appendUl('add1')
+    .appendUl('add2')
+    .appendUl('add3')
+    .appendUl('add4');
+
+var target= document.getElementById('target');
+target.appendChild(ul);
+        </script>
+    </body>
+</html>

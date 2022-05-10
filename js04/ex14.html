@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+var xhr,data;
+var callback2=function(){
+    if(xhr.readyState==4 && xhr.status==200){
+        data=JSON.parse(xhr.responseText);
+        // 
+        var msg='';
+        data.students.forEach(function(stu){
+            msg+='<tr>';
+            msg+='<td>'+stu.num+'</td>';
+            msg+='<td>'+stu.name+'</td>';
+            msg+='<td>'+stu.kor+'</td>';
+            msg+='<td>'+stu.eng+'</td>';
+            msg+='<td>'+stu.math+'</td>';
+            msg+='<td>'+(stu.kor+stu.eng+stu.math)+'</td>';
+            msg+='</tr>';
+        });
+        document.querySelector('table>tbody').innerHTML=msg;
+    }
+};
+var getList=function(){
+    xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=callback2;
+    xhr.open('get','ex13.jsp');
+    xhr.send();
+};    
+window.onload=getList;    
+    </script>
+</head>
+<body>
+    <h1>학생성적</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>학번</th>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+                <th>합계</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>

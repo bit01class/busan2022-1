@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+window.onload=function(){
+    $('ul').css({
+            'list-style': 'none',
+            'padding': '0px',
+            'width': '600px',
+            'height': '400px',
+            'overflow': 'hidden'
+        });
+    var callback3=function(){
+        $('li').first().appendTo('ul');
+        setTimeout(callback3,1000);
+    };
+    setTimeout(callback3,1000);
+};        
+    </script>
+</head>
+<body>
+    <h1>dom insert</h1>
+    <div>
+        <ul>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img01" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img02" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img03" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img04" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img05" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img06" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

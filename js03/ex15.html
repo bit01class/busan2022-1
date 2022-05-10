@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+            ul{
+                list-style: none;
+                padding: 0px;
+                width: 4200px;
+            }
+            ul>li{
+                float: left;
+            }
+
+        </style>
+        <script type="text/javascript">
+        var cnt=0;
+            window.onload=function(){
+                var ul=document.querySelector('ul');
+                ul.style.marginLeft='0px';
+                ul.innerHTML=ul.innerHTML+(ul.querySelector('li').outerHTML);
+            };
+
+function moveImg(){
+    if(cnt++==35){
+        cnt=0;
+    }
+    var ul=document.querySelector('ul');
+    ul.style.marginLeft= parseInt(ul.style.marginLeft)-50+'px';
+    console.log(ul.style.marginLeft);
+    if(ul.style.marginLeft=='-3600px'){ul.style.marginLeft='0px';}
+}
+setInterval(moveImg,50);
+        </script>
+    </head>
+    <body>
+     <div>
+        <ul>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img01"/></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img02"/></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img03"/></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img04"/></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img05"/></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=img06"/></li>
+        </ul>
+     </div>
+    </body>
+</html>

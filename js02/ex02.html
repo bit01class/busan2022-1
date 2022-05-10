@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+var arr1=[];
+var arr2=new Array();
+console.log(typeof arr1,typeof arr2,arr1,arr2);
+console.log(arr1.length);
+var arr3=[1,3,5,7,9];
+var arr4=[2,4,6,8];
+console.log(arr3.concat(arr4));
+for(var i=0; i<arr3.length; i++){
+    console.log(arr3[i]);
+}
+console.log('--------------------------');
+var callback1=function(a){// a ele, b idx, c arr
+    console.log(a);
+}
+arr3.forEach(callback1);
+console.log('--------------------------');
+var arr5=[4,2,7,1,8,9];
+//arr5.sort();
+//arr5.reverse();
+arr5.sort(function(a,b){
+    console.log(a,b);
+    return -1;
+});
+console.log(arr5.toString());
+console.log('--------------------------');
+var arr6=[];
+// arr6.push('첫번째');
+// arr6.push('두번째');
+// arr6.push('세번째');
+// arr6.push('네번째');
+arr6.unshift('첫번째');
+arr6.unshift('두번째');
+arr6.unshift('세번째');
+arr6.unshift('네번째');
+// console.log(arr6.pop());
+// console.log(arr6.pop());
+// console.log(arr6.shift());
+// console.log(arr6.shift());
+console.log(arr6.toString());
+console.log('--------------------------');
+var arr7=[1,3,5,7,9];
+while(arr7.length){
+    console.log(arr7.shift());
+}
+console.log('--------------------------');
+var arr8=[1,3,5,7,9];
+for(idx in arr8){
+    console.log(idx,arr8[idx]);
+}
+console.log('--------------------------');
+for(ele of arr8){
+    console.log(ele);
+}
+        </script>
+    </head>
+    <body>
+        <h1>test</h1>
+    </body>
+</html>

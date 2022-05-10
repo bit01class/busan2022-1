@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+var obj1={};
+var obj2=new Object();
+obj1.key1=1111;
+obj1.key2=2222;
+obj1.key3=3333;
+obj1.key4=4444;
+console.log(obj1);
+for(key in obj1){
+    console.log(key,obj1[key]);
+}
+console.log(Object.keys(obj1));
+console.log(Object.values(obj1));
+console.log('-----------------------');
+var obj3={
+    'key1':'val1',
+    'key2':function(){console.log('실행');}
+
+};
+for(key in obj3){
+    if(typeof obj3[key]==='function'){
+        obj3[key]();
+    }
+    if(typeof obj3[key]==='string'){
+        console.log(obj3[key]);
+    }
+}
+        </script>
+    </head>
+    <body></body>
+</html>
