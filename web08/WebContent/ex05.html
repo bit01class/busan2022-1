@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            // $('#target').load('ex07.jsp','name=admin',function(a,b,c){
+            //     console.log(typeof a);
+            // });
+            // $.get('ex07.jsp',function(a,b,c){
+            //     // console.log(a,b,c);
+            //     $('#target').html($('#target').html(a).find('h2'));
+            // });
+            // $.get('ex08.xml',function(a,b,c){
+            //     $(a).find('row').each(function(idx,ele){
+            //         $('#target').append('<div>'+$(ele).children().last().text()+'</div>');
+            //     });
+            // });
+            // $.post('ex09.jsp',function(a,b,c){
+            //     $(a.root).each(function(idx,ele){
+            //         console.log(ele.method);
+            //         $('<div/>').text(ele.key2).appendTo('#target');
+            //     });
+            // },'json');
+            
+            // $.getJSON('ex09.jsp',function(a,b,c){
+            //     $(a.root).each(function(idx,ele){
+            //         $('<div/>').text(ele.key2).appendTo('#target');
+            //     });
+            // });
+        var callback1=function(msg){
+            $.ajax({
+                url:'ex09.jsp',
+                type:'post',
+                data:'name='+msg,
+                // contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                dataType:'json',
+                error:function(xhr,statusMsg,errMsg){
+                    console.log(statusMsg,errMsg);
+                    alert('비동기통신 실패');
+                },
+                success:function(data){
+                    console.log('success',typeof data,data.root);
+                    data.root.forEach(function(ele,idx){
+                        $('<div/>').html('<span>'+ele.key2+'</span><span>'
+                                +ele.method+'</span>').appendTo('#target');
+                    });
+                }
+            });
+        };
+        $('input').on('change',function(){
+            var msg=this.value;
+            callback1(msg);
+        });
+
+        });
+    </script>
+</head>
+<body>
+    <h1>ajax</h1>
+    <input type="text"/>
+    <div id="target"></div>
+</body>
+</html>

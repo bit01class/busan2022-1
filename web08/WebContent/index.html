@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+var getList=function(){
+	$.ajax({
+		type:'get',
+		url:'list.jsp',
+		dataType:'xml',
+		success:function(data){
+			$('table>tbody').empty();
+			$(data).find('row').each(function(idx,ele){
+				var deptno=$(ele).find('deptno').html();
+				var dname=$(ele).find('dname').html();
+				var loc=$(ele).find('loc').html();
+				$('<tr/>')
+					.append('<td>'+deptno+'</td>')
+					.append('<td>'+dname+'</td>')
+					.append('<td>'+loc+'</td>')
+					.append('<td><button>삭제</button></td>')
+					.appendTo('table>tbody')
+					/* .find('button').click(function(){
+						console.log($(this).parent().parent().children().first().text());
+					}) */
+					;
+			});
+		}
+	});
+};
+var delDept=function(deptno){
+	$.ajax({
+		type:'post',
+		url:'delete.jsp',
+		data:'deptno='+deptno,
+		success:function(){
+			getList();
+		}
+	});
+};
+$(function(){
+	$(document).on('click','table button',function(e){
+		var deptno=$(e.target).parent().parent().children().first().text();
+		delDept(deptno);
+	});
+	
+	$(document).on('click','table tr',function(e){
+		console.log($(e.target).parent().children().eq(2).text());
+		$('form').find('#deptno').val($(e.target).parent().children().eq(0).text());
+		$('form').find('#dname').val($(e.target).parent().children().eq(1).text());
+		$('form').find('#loc').val($(e.target).parent().children().eq(2).text());
+		$('form').attr('action','update.jsp');
+	});
+	
+	getList();
+	$('form input').first().keyup(function(e){
+		var val=$(this).val();
+		var arr=[];
+		$('tbody>tr>td:first-child').each(function(idx,ele){
+			arr.push($(ele).text());
+		});
+		if(arr.indexOf(val)<0){
+			$('form').attr('action','insert.jsp');
+		}
+	});
+	$('form').submit(function(){
+		/////insert
+		var param=$('form').serialize();
+		var action=$('form').attr('action');
+		$.ajax({
+			type:'post',
+			url:action,
+			data:param,
+			success:function(){
+				getList();
+				$('#deptno').val("");$('#dname').val("");$('#loc').val("");
+				$('form').attr('action','insert.jsp');
+			}
+		});
+		/////
+		return false;
+	});
+});
+
+</script>
+</head>
+<body>
+	<h1>DEPT CRUD</h1>
+	<form action="insert.jsp">
+		<div>
+			<label for="deptno">deptno</label>
+			<input type="text" name="deptno" id="deptno" />
+		</div>
+		<div>
+			<label for="dname">dname</label>
+			<input type="text" name="dname" id="dname" />
+		</div>
+		<div>
+			<label for="loc">loc</label>
+			<input type="text" name="loc" id="loc" />
+		</div>
+		<div>
+			<button>입력</button>
+		</div>
+	</form>
+	<table>
+		<thead>
+			<tr>
+				<th>deptno</th>
+				<th>dname</th>
+				<th>loc</th>
+				<th>delete</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

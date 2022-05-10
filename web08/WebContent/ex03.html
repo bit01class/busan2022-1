@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+$(function(){
+    var div=$('#target>div').bxSlider({
+        minSlides:1,
+        maxSlides:1,
+        moveSlides:1,
+        slideWidth:600,
+        // controls:false,
+        pager:false
+        // ,auto:true
+    });
+    $('#target>ul img').height(130);
+    $('#target>ul').bxSlider({
+        minSlides:3,
+        maxSlides:3,
+        moveSlides:1,
+        slideWidth:200
+        ,auto:true,
+        onSliderLoad:function(a){
+            div.goToSlide(a);
+        },
+        onSlideNext:function(a,b,c){
+            div.goToSlide(c);
+        },
+        onSlidePrev:function(a,b,c){
+            div.goToSlide(c);
+        }
+    });
+});        
+    </script>
+</head>
+<body>
+    <div id="target">
+        <div>
+            <div><img src="https://dummyimage.com/600x400/000/fff.png&text=image01"/></div>
+            <div><img src="https://dummyimage.com/600x400/000/fff.png&text=image02"/></div>
+            <div><img src="https://dummyimage.com/600x400/000/fff.png&text=image03"/></div>
+            <div><img src="https://dummyimage.com/600x400/000/fff.png&text=image04"/></div>
+            <div><img src="https://dummyimage.com/600x400/000/fff.png&text=image05"/></div>
+            <div><img src="https://dummyimage.com/600x400/000/fff.png&text=image06"/></div>
+        </div>
+        <ul>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image01" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image02" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image03" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image04" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image05" alt=""></li>
+            <li><img src="https://dummyimage.com/600x400/000/fff.png&text=image06" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>
