@@ -127,6 +127,26 @@
 	<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
 	<script type="text/javascript">
 	$(function(){
+		var addEvent=function(e){
+			var param=$(e.target).serialize();
+			addList(param);
+			return false;
+		};
+		var editEvent=function(e){
+			var param=$(e.target).serialize();
+			editOne(param);
+			$(e.target).off('submit',editEvent).on('submit',detailEvent);
+			return false;
+		};
+		var detailEvent=function(e){
+			$(e.target).prev().text('수정페이지');
+			$(e.target).find('input').each(function(idx,ele){
+				if(idx!=0) $(ele).removeProp('readonly');
+			});
+			$(e.target).off('submit',detailEvent).on('submit',editEvent);
+			return false;
+		}
+		
 		$('#popup').hide();
 		
 		;
@@ -142,7 +162,20 @@
 			nextText:'>',
 			prevText:'<'
 		});
-		
+		var editOne=function(param){
+			$.ajax({
+				type:'post',
+				url:'bbs/update.jsp',
+				data:param,
+				error:function(a,b,c){
+					console.log(b,c);
+				},
+				success:function(){
+					$('#menu a').eq(2).click();
+					$('#popup').click();
+				}
+			});
+		};
 		var getOne=function(empno){
 			$('#popup').find('h2').text('상세페이지');
 			$('#popup').find('button').first().text('수정');
@@ -152,6 +185,8 @@
 				$('#popup').find('input').eq(1).val(data.root[0].ename);
 				$('#popup').find('input').eq(2).val(data.root[0].sal);
 			});
+			$('#popup form').off('submit',addEvent);
+			$('#popup form').on('submit',detailEvent);
 			$('#popup').show();
 		};
 		
@@ -216,18 +251,14 @@
 			$('#popup').find('h2').text('입력페이지');
 			$('#popup').find('button').first().text('입력');
 			$('#popup').find('input').removeProp('readonly');
+			$('#popup form').off('submit',detailEvent).on('submit',addEvent);
 			$('#popup').hide();
 		});
 		$('#p3>a').click(function(){
 			$('#popup').show();
 			return false;
 		});
-		$('#popup form').submit(function(e){
-			var param=$(e.target).serialize();
-			addList(param);
-			
-			return false;
-		});
+		$('#popup form').on('submit',addEvent);
 		
 		$('#menu a').first().click();
 	});
