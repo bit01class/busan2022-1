@@ -128,6 +128,10 @@
 	<script type="text/javascript">
 	$(function(){
 		// 이벤트 callback
+		var delEvent=function(e){
+			e.preventDefault();
+			delOne($(e.target).parent().parent().find('[type=number]').val());
+		};
 		var addEvent=function(e){
 			var param=$(e.target).serialize();
 			addList(param);
@@ -141,6 +145,7 @@
 		};
 		var detailEvent=function(e){
 			$(e.target).prev().text('수정페이지');
+			$(e.target).find('button').eq(1).text('취소').off('click',delEvent);
 			$(e.target).find('input').each(function(idx,ele){
 				if(idx!=0) $(ele).removeProp('readonly');
 			});
@@ -162,6 +167,12 @@
 		};
 		
 		// ajax
+		var delOne=function(param){
+			$.post('bbs/delete.jsp','empno='+param,function(){
+				$('#menu a').eq(2).click();
+				$('#popup').click();
+			});
+		}
 		var editOne=function(param){
 			$.ajax({
 				type:'post',
@@ -178,7 +189,9 @@
 		};
 		var getOne=function(empno){
 			$('#popup').find('h2').text('상세페이지');
-			$('#popup').find('button').first().text('수정');
+			$('#popup').find('button')
+							.first().text('수정')
+							.next().text('삭제').on('click',delEvent);
 			$('#popup').find('input').prop('readonly',true);
 			$.getJSON('bbs/detail.jsp','empno='+empno,function(data){
 				$('#popup').find('input').eq(0).val(data.root[0].empno);
@@ -236,7 +249,9 @@
 			$('#popup form input').val('');
 			$('#popup .err').remove();
 			$('#popup').find('h2').text('입력페이지');
-			$('#popup').find('button').first().text('입력');
+			$('#popup').find('button')
+							.first().text('입력')
+							.next().text('취소').off('click',delEvent);
 			$('#popup').find('input').removeProp('readonly');
 			$('#popup form').off('submit',detailEvent).on('submit',addEvent);
 			$('#popup').hide();
