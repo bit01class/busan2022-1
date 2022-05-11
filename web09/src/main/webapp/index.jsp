@@ -127,6 +127,7 @@
 	<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
 	<script type="text/javascript">
 	$(function(){
+		// 이벤트 callback
 		var addEvent=function(e){
 			var param=$(e.target).serialize();
 			addList(param);
@@ -146,22 +147,21 @@
 			$(e.target).off('submit',detailEvent).on('submit',editEvent);
 			return false;
 		}
+		var menu1Click=function(){
+			$('#content>.row').hide().eq(0).show();
+			return false;
+		};
+		var menu2Click=function(){
+			$('#content>.row').hide().eq(1).show();
+			return false;
+		};
+		var menu3Click=function(){
+			$('#content>.row').hide().eq(2).show();
+			getList();
+			return false;
+		};
 		
-		$('#popup').hide();
-		
-		;
-		
-		
-		$('#bx>ul').bxSlider({
-			slideWidth:800,
-			minSlides:1,
-			maxSlides:1,
-			moveSlides:1,
-			auto:true,
-			pager:false,
-			nextText:'>',
-			prevText:'<'
-		});
+		// ajax
 		var editOne=function(param){
 			$.ajax({
 				type:'post',
@@ -220,20 +220,7 @@
 						}
 			});
 		};
-
-		var menu1Click=function(){
-			$('#content>.row').hide().eq(0).show();
-			return false;
-		};
-		var menu2Click=function(){
-			$('#content>.row').hide().eq(1).show();
-			return false;
-		};
-		var menu3Click=function(){
-			$('#content>.row').hide().eq(2).show();
-			getList();
-			return false;
-		};
+		// 이벤트 등록
 		$('#menu a')
 			.first()
 			.click(menu1Click)
@@ -259,7 +246,19 @@
 			return false;
 		});
 		$('#popup form').on('submit',addEvent);
-		
+
+		// init
+		$('#popup').hide();
+		$('#bx>ul').bxSlider({
+			slideWidth:800,
+			minSlides:1,
+			maxSlides:1,
+			moveSlides:1,
+			auto:true,
+			pager:false,
+			nextText:'>',
+			prevText:'<'
+		});
 		$('#menu a').first().click();
 	});
 	</script>
