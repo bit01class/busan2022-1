@@ -116,7 +116,12 @@
 	#popup>div>form>div>button{
 		
 	}
-	
+	#popup>div>.err{
+	background-color: red;
+	color: white;
+	text-align: center;
+	font-style: italic;
+	}
 	</style>
 	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
@@ -174,12 +179,36 @@
 			e.stopPropagation();
 		});
 		$('#popup').add('#popup form button:eq(2)').click(function(){
+			$('#popup form input').val('');
+			$('#popup .err').remove();
 			$('#popup').hide();
 		});
 		$('#p3>a').click(function(){
 			$('#popup').show();
 			return false;
 		});
+		var addList=function(param){
+			$.ajax({
+				url:'bbs/insert.jsp',
+				data:param,
+				type:'post',
+				error:function(xhr,a,b){
+					console.log('err 발생');
+					$('#popup h2').before('<div class="err">에러발생('+b+')</div>');
+				},
+				success:function(){
+							$('#menu a').eq(2).click();
+							$('#popup').click();
+						}
+			});
+		};
+		$('#popup form').submit(function(e){
+			var param=$(e.target).serialize();
+			addList(param);
+			
+			return false;
+		});
+		
 		$('#menu a').first().click();
 	});
 	</script>
