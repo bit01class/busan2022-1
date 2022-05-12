@@ -95,6 +95,12 @@
 		width: 80%;
 		margin: 0px auto 30px auto;
 	}
+	.err{
+		background-color: red;
+		height: 50px;
+		text-align: center;
+		color:white;
+	}
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -131,22 +137,25 @@
 	});
 </script>
 </head>
+<body>
 <%
 String[] param={
 		request.getParameter("empno"),
 		request.getParameter("ename"),
 		request.getParameter("sal")
 };
+try{
 if("POST".equals(request.getMethod())){
 	int empno=Integer.parseInt(param[0].trim());
 	String ename=param[1].trim();
 	int sal=Integer.parseInt(param[2].trim());
-	
-	
-	//response.sendRedirect("list.jsp");
+	BitEmp emp=new BitEmp();
+	if(emp.insertOne(empno,ename,sal))response.sendRedirect("list.jsp");
+}
+}catch(Exception e){
+	out.print("<div class=\"err\">오류발생<div class=\"btn\">x</div></div>");	
 }
 %>
-<body>
 <nav>
 	<ul>
 		<li><a href="index.jsp">HOME</a></li>

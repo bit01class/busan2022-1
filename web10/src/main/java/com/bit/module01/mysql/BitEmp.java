@@ -33,4 +33,31 @@ public class BitEmp {
 		}
 		return list;
 	}
+	
+	public boolean insertOne(int empno,String ename,int sal) throws ClassNotFoundException, SQLException {
+		String sql="insert into emp (empno, ename, sal, hiredate) values ("
+						+empno+",'"+ename+"',"+sal+",now())";
+		try(
+				Connection conn=BitMysql.getConnection();
+				Statement stmt=conn.createStatement();
+				){
+			return stmt.executeUpdate(sql)>0;
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
