@@ -164,8 +164,8 @@ public List<EmpDto> getList() throws SQLException{
 					<%-- 
 					<span><%=bean.getEname().length()>3?bean.getEname().substring(0,3)+"..": bean.getEname()%></span>
 					 --%>
-					<%if(bean.getEname().length()>3){ %>
-					<span><%=bean.getEname().substring(0,3)+".."%></span>
+					<%if(bean.getEname().length()>10){ %>
+					<span><%=bean.getEname().substring(0,10)+".."%></span>
 					<%}else{ %>
 					<span><%=bean.getEname()%></span>
 					<%} %>

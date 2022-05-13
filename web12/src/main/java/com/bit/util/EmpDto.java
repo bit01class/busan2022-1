@@ -2,7 +2,7 @@ package com.bit.util;
 
 public class EmpDto {
 	private int empno,sal;
-	private String ename;
+	private String ename="";
 	
 	public int getEmpno() {
 		return empno;

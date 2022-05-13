@@ -123,6 +123,55 @@ nav>ul>li>a{
 
 </script>
 </head>
+<%@ page import="java.sql.*,com.bit.util.*" %>
+<%!
+Connection conn;
+Statement stmt;
+public void insertOne(int empno,String ename,int sal) throws SQLException{
+	String sql="insert into emp (empno,ename,sal,hiredate) values ("+empno+",'"+ename+"',"+sal+",now())";
+	try{
+		conn=DBServer.getConnection();
+		stmt=conn.createStatement();
+		stmt.executeUpdate(sql);
+	}finally{
+		if(stmt!=null)stmt.close();
+		if(conn!=null)conn.close();
+	}
+}
+
+public void insertOne(EmpDto bean) throws SQLException{
+	String sql="insert into emp (empno,ename,sal,hiredate) values ("+bean.getEmpno()
+				+",'"+bean.getEname()+"',"+bean.getSal()+",now())";
+	try{
+		conn=DBServer.getConnection();
+		stmt=conn.createStatement();
+		stmt.executeUpdate(sql);
+	}finally{
+		if(stmt!=null)stmt.close();
+		if(conn!=null)conn.close();
+	}
+}
+%>
+<jsp:useBean id="bean" class="com.bit.util.EmpDto"></jsp:useBean>
+<jsp:setProperty property="empno" name="bean"/>
+<jsp:setProperty property="ename" name="bean"/>
+<jsp:setProperty property="sal" name="bean"/>
+<%
+
+request.setCharacterEncoding("utf-8");// servlet filter..에서 극복
+
+if(request.getMethod().equals("POST")){
+	//int empno=Integer.parseInt(request.getParameter("empno").trim());
+	//String ename=request.getParameter("ename").trim();
+	//int sal=Integer.parseInt(request.getParameter("sal").trim());
+	//EmpDto bean=new EmpDto();
+	//bean.setEmpno(1111);
+	//bean.setEname(ename);
+	//bean.setSal(sal);
+	insertOne(bean);
+	response.sendRedirect("./");
+}
+%>
 <body>
 <nav>
 	<h1><a href="./">비트교육센터</a></h1>
@@ -141,15 +190,15 @@ nav>ul>li>a{
 		<form class="form-control" method="post">
 			<div class="form-group">
 				<label for="empno">empno</label>
-				<input type="number" name="empno" id="empno" placeholder="사번을 입력"/>
+				<input type="number" name="empno" id="empno" value='<jsp:getProperty property="empno" name="bean"/>' placeholder="사번을 입력"/>
 			</div>
 			<div class="form-group">
 				<label for="ename">ename</label>
-				<input type="text" name="ename" id="ename" placeholder="이름을 입력"/>
+				<input type="text" name="ename" id="ename" value='<jsp:getProperty property="ename" name="bean"/>' placeholder="이름을 입력"/>
 			</div>
 			<div class="form-group">
 				<label for="sal">sal</label>
-				<input type="number" name="sal" id="sal" placeholder="금액을 입력"/>
+				<input type="number" name="sal" id="sal" value='<jsp:getProperty property="sal" name="bean"/>' placeholder="금액을 입력"/>
 			</div>
 			<div class="form-group">
 				<button class="btn btn-primary">입력</button>
