@@ -11,6 +11,7 @@ public class DBServerTest {
 	@Test
 	public void testGetConnection() throws SQLException {
 		assertNotNull(DBServer.getConnection());
+		DBServer.getConnection().close();
 	}
 
 }

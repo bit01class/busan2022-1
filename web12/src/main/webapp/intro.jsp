@@ -75,7 +75,7 @@ nav>ul>li>a{
 	<div class="row">
 		<div class="grid12">
 		<!-- content start -->
-		<img alt="" src="imgs/index.png">
+		<img alt="" src="https://www.bitacademy.com/img/main_bn_0414_1.png">
 		<!-- content end -->
 		</div>
 	</div>
