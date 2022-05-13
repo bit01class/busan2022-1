@@ -3,7 +3,14 @@ package com.bit.util;
 public class EmpDto {
 	private int empno,sal;
 	private String ename="";
+	private boolean result;
 	
+	public boolean isResult() {
+		return result;
+	}
+	public void setResult(boolean result) {
+		this.result = result;
+	}
 	public int getEmpno() {
 		return empno;
 	}

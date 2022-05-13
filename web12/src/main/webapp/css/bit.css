@@ -133,3 +133,13 @@ nav>ul>li>a{
  }
  #popup>div>form{}
  #popup>div>form>button{}
+ 
+
+nav>span{
+	margin-top:10px;
+	margin-right:10px;
+	display:block;
+	font-size:20px;
+	font-weight:bold;
+	float: right;
+}
