@@ -159,16 +159,9 @@ public List<EmpDto> getList() throws SQLException{
 		<div class="table">
 		<%for(EmpDto bean : getList()){ %>
 			<div>
-				<a href="#">
+				<a href="detail.jsp?empno=<%=bean.getEmpno() %>">
 					<span><%=bean.getEmpno() %></span>
-					<%-- 
-					<span><%=bean.getEname().length()>3?bean.getEname().substring(0,3)+"..": bean.getEname()%></span>
-					 --%>
-					<%if(bean.getEname().length()>10){ %>
-					<span><%=bean.getEname().substring(0,10)+".."%></span>
-					<%}else{ %>
-					<span><%=bean.getEname()%></span>
-					<%} %>
+					<span><%=bean.getEname().length()>10?bean.getEname().substring(0,10)+"..": bean.getEname()%></span>
 					<span><%=bean.getSal() %></span>
 				</a>
 			</div>

@@ -106,6 +106,10 @@ nav>ul>li>a{
  	color:white;
  	background-color: blue;
  }
+ .btn-danger{
+ 	color:white;
+ 	background-color: red;
+ }
  .form-control{
  	margin: 0px auto;
  	width: 80%;
@@ -118,51 +122,92 @@ nav>ul>li>a{
  	height: 50px;
  	width: 100%;
  }
+ #popup{
+ 	position: fixed;
+ 	width: 100%;
+ 	height: 100%;
+ 	background-color: rgba(0,0,0,0.5);
+ 	left: 0px;
+ 	top:0px;
+ }
+ #popup>div{
+ 	width: 400px;
+ 	height: 200px;
+ 	padding: 50px;
+ 	margin: 100px auto 0px auto;
+ 	background-color: white;
+ 	border-radius: 10px;
+ }
+ #popup>div>h2{
+ 	text-align: center;
+ }
+ #popup>div>form{}
+ #popup>div>form>button{}
 </style>
 <script type="text/javascript">
+$(function(){
+	$('#popup').hide().show();
+	$('.container form').one("submit",function(e){
+		$('.container form').prev().html("수정 페이지");
+		$('.container form input').filter(":gt(0)").removeProp('readonly');
+		$('.container form button').eq(1).text('취소').attr('type','reset').removeClass('btn-danger')
+		.next().one('click',function(){
 
+			$('.container form').prev().html("상세 페이지");
+			$('.container form input').filter(":gt(0)").prop('readonly',true);
+			$('.container form button').eq(1).text('삭제').attr('type','button').addClass('btn-danger');
+		});
+		;
+		return false;
+	});
+	$('.container form button').eq(1).click(function(e){
+		if($(e.target).text()=='삭제'){
+			deleteForm();
+		}
+	});
+});
 </script>
 </head>
 <%@ page import="java.sql.*,com.bit.util.*" %>
 <%!
 Connection conn;
 Statement stmt;
-public void insertOne(int empno,String ename,int sal) throws SQLException{
-	String sql="insert into emp (empno,ename,sal,hiredate) values ("+empno+",'"+ename+"',"+sal+",now())";
-	try{
-		conn=DBServer.getConnection();
-		stmt=conn.createStatement();
-		stmt.executeUpdate(sql);
-	}finally{
-		if(stmt!=null)stmt.close();
-		if(conn!=null)conn.close();
-	}
-}
-
-public void insertOne(EmpDto bean) throws SQLException{
-	String sql="insert into emp (empno,ename,sal,hiredate) values ("+bean.getEmpno()
-				+",'"+bean.getEname()+"',"+bean.getSal()+",now())";
-	try{
-		conn=DBServer.getConnection();
-		stmt=conn.createStatement();
-		stmt.executeUpdate(sql);
-	}finally{
-		if(stmt!=null)stmt.close();
-		if(conn!=null)conn.close();
-	}
-}
+ResultSet rs;
 %>
 <jsp:useBean id="bean" class="com.bit.util.EmpDto"></jsp:useBean>
 <jsp:setProperty property="empno" name="bean"/>
 <jsp:setProperty property="ename" name="bean"/>
 <jsp:setProperty property="sal" name="bean"/>
 <%
-
-request.setCharacterEncoding("utf-8");// servlet filter..에서 극복
-
-if(request.getMethod().equals("POST")){
-	insertOne(bean);
+if(request.getMethod().equals("GET")){
+	String sql="select * from emp where empno="+bean.getEmpno();
+	try{
+		conn=DBServer.getConnection();
+		stmt=conn.createStatement();
+		rs=stmt.executeQuery(sql);
+		if(rs.next()){
+			bean.setEname(rs.getString("ename"));
+			bean.setSal(rs.getInt("sal"));
+		}
+	}finally{
+		if(rs!=null) rs.close();
+		if(stmt!=null) stmt.close();
+		if(conn!=null) conn.close();
+	}
+}else{
+	String sql="update emp set ename='"+bean.getEname()
+			+"',sal="+bean.getSal()+" where empno="+bean.getEmpno();
+	try{
+		conn=DBServer.getConnection();
+		stmt=conn.createStatement();
+		stmt.executeUpdate(sql);
+	}finally{
+		if(stmt!=null) stmt.close();
+		if(conn!=null) conn.close();
+	}
+	
 	response.sendRedirect("./");
+	return;
 }
 %>
 <body>
@@ -179,23 +224,23 @@ if(request.getMethod().equals("POST")){
 	<div class="row">
 		<div class="grid12">
 		<!-- content start -->
-		<h2>입력 페이지</h2>
+		<h2>상세 페이지</h2>
 		<form class="form-control" method="post">
 			<div class="form-group">
 				<label for="empno">empno</label>
-				<input type="number" name="empno" id="empno" value='<jsp:getProperty property="empno" name="bean"/>' placeholder="사번을 입력"/>
+				<input type="number" name="empno" id="empno" value='<jsp:getProperty property="empno" name="bean"/>' placeholder="사번을 입력" readonly/>
 			</div>
 			<div class="form-group">
 				<label for="ename">ename</label>
-				<input type="text" name="ename" id="ename" value='<jsp:getProperty property="ename" name="bean"/>' placeholder="이름을 입력"/>
+				<input type="text" name="ename" id="ename" value='<jsp:getProperty property="ename" name="bean"/>' placeholder="이름을 입력" readonly/>
 			</div>
 			<div class="form-group">
 				<label for="sal">sal</label>
-				<input type="number" name="sal" id="sal" value='<jsp:getProperty property="sal" name="bean"/>' placeholder="금액을 입력"/>
+				<input type="number" name="sal" id="sal" value='<jsp:getProperty property="sal" name="bean"/>' placeholder="금액을 입력" readonly/>
 			</div>
 			<div class="form-group">
-				<button class="btn btn-primary">입력</button>
-				<button class="btn" type="reset">취소</button>
+				<button class="btn btn-primary">수정</button>
+				<button class="btn btn-danger" type="button">삭제</button>
 				<button class="btn" type="button">뒤로</button>
 			</div>
 		</form>
@@ -208,7 +253,16 @@ if(request.getMethod().equals("POST")){
 		</div>
 	</div>
 </div>
-
+<div id="popup">
+	<div>
+		<h2>삭제하시겠습니까?</h2>
+		<form action="delete.jsp" method="post">
+			<input type="hidden" name="empno" value="<jsp:getProperty property="empno" name="bean"/>"/>
+			<button class="btn btn-danger">삭제</button>
+			<button class="btn" type="button">취소</button>
+		</form>
+	</div>
+</div>
 </body>
 </html>
 
