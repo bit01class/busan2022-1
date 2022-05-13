@@ -5,58 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/mygrid.css">
-<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-<style type="text/css">
-body{
-	margin: 0px;
-}
-nav{
-	overflow: hidden;
-	border-bottom: 1px solid gray;
-	margin-bottom: 5px;
-}
-nav>h1{
-	float: left;
-	margin-left: 10px;
-}
-nav>h1>a{
-	display: inline-block;
-	width: 205px;
-	height: 40px;
-	background-image: url("imgs/logo.jpg");
-	text-indent: -9999px;
-}
-nav>ul{
-	list-style: none;
-	padding: 0px;
-	margin-left:100px;
-	float: left;
-}
-nav>ul>li{
-	float: left;
-	width: 100px;
-	border-right: 5px solid gray;
-}
-nav>ul>li>a{
-	display: block;
-	height: 40px;
-	color: gray;
-	text-decoration: none;
-	font-size: 20pt;
-	text-align: center;
-}
-.row img{
-	width: 100%;
-}
-#footer{
-	margin-top: 100px;
-	background-image: url("imgs/logo.jpg");
-	background-repeat:no-repeat;
-	height: 80px;
-	text-indent: 250px;
-}
-</style>
+<jsp:include page="template/head.jsp"></jsp:include>
 <script type="text/javascript">
 
 </script>
@@ -76,6 +25,8 @@ nav>ul>li>a{
 		<div class="grid12">
 		<!-- content start -->
 		<img alt="" src="imgs/index.png">
+		<jsp:useBean id="obj" class="com.bit.util.EmpDto" scope="request"></jsp:useBean>
+		<p><jsp:getProperty property="ename" name="obj"/></p>
 		<!-- content end -->
 		</div>
 	</div>
