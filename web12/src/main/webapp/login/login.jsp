@@ -22,6 +22,7 @@ login.setEname(request.getParameter("ename").trim());
 try{
 	String sql="select count(*) from emp where empno="
 			+login.getEmpno()+" and ename='"+login.getEname()+"'";
+	System.out.println(sql);
 	conn=DBServer.getConnection();
 	stmt=conn.createStatement();
 	rs=stmt.executeQuery(sql);
