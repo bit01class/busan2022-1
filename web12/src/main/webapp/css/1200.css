@@ -1,0 +1,26 @@
+.container{
+    width: 1200px;
+    margin: 0px auto;
+}
+.container .grid1,.container .grid2,.container .grid3,
+.container .grid4,.container .grid5,.container .grid6,
+.container .grid7,.container .grid8,.container .grid9,
+.container .grid10,.container .grid11,.container .grid12{
+    float: left;
+}
+.container .row{
+    clear: both;
+    overflow: hidden;
+}
+.container .grid1{width: 100px;}
+.container .grid2{width: 200px;}
+.container .grid3{width: 300px;}
+.container .grid4{width: 400px;}
+.container .grid5{width: 500px;}
+.container .grid6{width: 600px;}
+.container .grid7{width: 700px;}
+.container .grid8{width: 800px;}
+.container .grid9{width: 900px;}
+.container .grid10{width: 1000px;}
+.container .grid11{width: 1100px;}
+.container .grid12{width: 1200px;}
