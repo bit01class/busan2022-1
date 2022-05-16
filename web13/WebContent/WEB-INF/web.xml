@@ -28,6 +28,22 @@
   	<servlet-name>ex11</servlet-name>
   	<servlet-class>com.bit.controller.Ex11</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>empXml</servlet-name>
+  	<servlet-class>com.bit.controller.Ex12</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>addXml</servlet-name>
+  	<servlet-class>com.bit.controller.Ex13</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>addXml</servlet-name>
+  	<url-pattern>/insert.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>empXml</servlet-name>
+  	<url-pattern>/emp.xml</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ex11</servlet-name>
   	<url-pattern>/ex11.html</url-pattern>
