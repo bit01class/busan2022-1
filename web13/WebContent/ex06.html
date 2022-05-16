@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>ex06 page</h1>
+	<a href="#">get ex08.html</a>
+	<form action="ex08.html" method="post">
+		<input type="text" name="id"/>
+		<button>이동</button>
+	</form>
+	
+	
+<script type="text/javascript">
+var msg="한글";
+document.querySelector('a').onclick=function(){
+	window.location.href="/web13/ex08.html?id="+encodeURIComponent(msg);
+	return false;
+}
+</script>
+</body>
+</html>
