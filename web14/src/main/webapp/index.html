@@ -27,6 +27,18 @@ $(function(){
 	$('.navbar a').eq(1).click(function(e){
 		//e.preventDefault();
 		$('#content>div').hide().filter('#p2').show();
+		$.getJSON('api/emps.json',function(data){
+			$('#p2 table>tbody').empty();
+			$(data.emp).each(function(idx,ele){
+				var row=ele;
+				$('<tr/>')
+					.append('<td><a href="#'+row.empno+'">'+row.empno+'</a></td>')
+					.append('<td><a href="#'+row.empno+'">'+row.ename+'</a></td>')
+					.append('<td><a href="#'+row.empno+'">'+row.sal+'</a></td>')
+					.appendTo('#p2 table>tbody');
+			});
+		});
+		
 	});
 });
 </script>

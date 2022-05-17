@@ -1,6 +1,7 @@
 package com.bit.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +19,9 @@ public class EmpListController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("application/json;charset=utf-8");
+		PrintWriter pw=resp.getWriter();
+		pw.println("{\"emp\":[");
 		String sql="select * from emp";
 		try(
 				Connection conn=BitMy.getConnection();
@@ -25,15 +29,23 @@ public class EmpListController extends HttpServlet{
 				ResultSet rs=stmt.executeQuery(sql);
 		){
 			while(rs.next()) {
+				if(!rs.isFirst())pw.print(',');
 				EmpDto bean=new EmpDto();
 				bean.setEmpno(rs.getInt("empno"));
 				bean.setEname(rs.getString("ename"));
 				bean.setSal(rs.getInt("sal"));
-				System.out.println(bean.toString());
+
+				pw.print("{");
+				pw.print("\"empno\":"+bean.getEmpno());
+				pw.print(",\"ename\":\""+bean.getEname()+"\"");
+				pw.print(",\"sal\":"+bean.getSal());
+				pw.println("}");
 			}
 		} catch (SQLException e) {
 					e.printStackTrace();
 				}
+
+		pw.println("]}");
 	}
 }
 
