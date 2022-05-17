@@ -15,7 +15,24 @@
 <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
+var popup2;
+var popup2Init=function(){
+	popup2.find('input').prop('readonly',true);
+	popup2.find('button').eq(1).html("수정").one('click',function(e){
+		popup2.find('input').filter(':gt(0)').removeProp('readonly');
+		return false;
+	});
+};
 $(function(){
+	popup2=$('#myModal').clone();
+	popup2.find('h4').html('상세페이지');
+	popup2.find('form').submit(function(e){
+		e.preventDefault();
+		var param=$(e.target).serialize();
+		console.log('수정',param);
+	});
+	
+	
 	$('.carousel').carousel({
 		  interval: 2000
 	});
@@ -35,7 +52,20 @@ $(function(){
 					.append('<td><a href="#'+row.empno+'">'+row.empno+'</a></td>')
 					.append('<td><a href="#'+row.empno+'">'+row.ename+'</a></td>')
 					.append('<td><a href="#'+row.empno+'">'+row.sal+'</a></td>')
-					.appendTo('#p2 table>tbody');
+					.appendTo('#p2 table>tbody')
+					.find('a').click(function(e){
+						var num=e.target.href.substr('http://localhost:8080/web14/#'.length);
+						$.getJSON('api/emp.json?empno='+num,function(data){
+							popup2.modal('show');
+							popup2Init();
+							popup2.find('input').eq(0).val(num);
+							popup2.find('input').eq(1).val(data.emp[0].ename);
+							popup2.find('input').eq(2).val(data.emp[0].sal);
+														
+						});
+					})
+					;
+				
 			});
 		});
 	});
