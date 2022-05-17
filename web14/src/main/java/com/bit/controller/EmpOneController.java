@@ -21,7 +21,7 @@ public class EmpOneController extends HttpServlet {
 		int empno=Integer.parseInt(req.getParameter("empno"));
 		String sql="select * from emp where empno="+empno;
 		
-		resp.setContentType("application/json");
+		resp.setContentType("application/json;charset=utf-8");
 		PrintWriter pw=resp.getWriter();
 		pw.print("{\"emp\":[{");
 		try(

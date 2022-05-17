@@ -17,6 +17,10 @@
   	<servlet-name>EmpOne</servlet-name>
   	<servlet-class>com.bit.controller.EmpOneController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>EmpUpdate</servlet-name>
+  	<servlet-class>com.bit.controller.EmpUpdateController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmpList</servlet-name>
   	<url-pattern>/api/emps.json</url-pattern>
@@ -28,5 +32,9 @@
   <servlet-mapping>
   	<servlet-name>EmpOne</servlet-name>
   	<url-pattern>/api/emp.json</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EmpUpdate</servlet-name>
+  	<url-pattern>/api/empUpdate.json</url-pattern>
   </servlet-mapping>
 </web-app>

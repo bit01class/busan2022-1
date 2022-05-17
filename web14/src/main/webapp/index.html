@@ -29,7 +29,18 @@ $(function(){
 	popup2.find('form').submit(function(e){
 		e.preventDefault();
 		var param=$(e.target).serialize();
-		console.log('수정',param);
+		$.ajax({
+			url:'api/empUpdate.json',
+			type:'post',
+			data:param,
+			error:function(){
+				console.log('err');
+			},
+			success:function(){
+				popup2.modal('hide');		
+				$('.navbar a').eq(1).click();
+			}
+		});
 	});
 	
 	
