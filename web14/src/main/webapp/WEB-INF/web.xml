@@ -21,6 +21,10 @@
   	<servlet-name>EmpUpdate</servlet-name>
   	<servlet-class>com.bit.controller.EmpUpdateController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>EmpDelete</servlet-name>
+  	<servlet-class>com.bit.controller.EmpDeleteController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmpList</servlet-name>
   	<url-pattern>/api/emps.json</url-pattern>
@@ -36,5 +40,9 @@
   <servlet-mapping>
   	<servlet-name>EmpUpdate</servlet-name>
   	<url-pattern>/api/empUpdate.json</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EmpDelete</servlet-name>
+  	<url-pattern>/api/empDel.json</url-pattern>
   </servlet-mapping>
 </web-app>
