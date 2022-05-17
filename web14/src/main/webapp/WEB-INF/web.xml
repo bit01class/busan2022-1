@@ -9,8 +9,16 @@
   	<servlet-name>EmpList</servlet-name>
   	<servlet-class>com.bit.controller.EmpListController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>EmpAdd</servlet-name>
+  	<servlet-class>com.bit.controller.EmpInsertController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmpList</servlet-name>
   	<url-pattern>/api/emps.json</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EmpAdd</servlet-name>
+  	<url-pattern>/api/addemp.json</url-pattern>
   </servlet-mapping>
 </web-app>

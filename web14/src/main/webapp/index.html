@@ -38,7 +38,20 @@ $(function(){
 					.appendTo('#p2 table>tbody');
 			});
 		});
-		
+	});
+	$('#myModal form').submit(function(e){
+		e.preventDefault();
+		$('#myModal h4').html('입력페이지');
+		var param=$(e.target).serialize();
+		$.post('api/addemp.json',param,function(data){
+			if(data.insert[0].result){
+				$('#myModal').modal('hide');		
+				$('.navbar a').eq(1).click();
+				$('#myModal input').val('');
+			}else{
+				$('#myModal h4').html('입력페이지<small>'+data.insert[0].err+'</small>');
+			}
+		},'json');
 	});
 });
 </script>
@@ -78,7 +91,7 @@ $(function(){
 	  <div id="p2" class="col-md-12">
 	  	<div class="jumbotron">
 		  <h1>EMP PAGE!</h1>
-		  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+		  <p><a class="btn btn-primary btn-lg" href="#add" role="button" data-toggle="modal" data-target="#myModal">입 력</a></p>
 		</div>
 		<table class="table">
 			<thead>
@@ -101,6 +114,42 @@ $(function(){
 		</address>
 	  </div>
 	</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">입력 페이지</h4>
+      </div>
+      <div class="modal-body">
+      	<form action="#add" method="post">
+      		<div class="form-group">
+      			<label for="empno">empno</label>
+      			<input class="form-control" type="text" name="empno" id="empno" placeholder="empno" />
+      		</div>
+      		<div class="form-group">
+      			<label for="ename">ename</label>
+      			<input class="form-control" type="text" name="ename" id="ename" placeholder="ename" />
+      		</div>
+      		<div class="form-group">
+      			<label for="sal">sal</label>
+      			<input class="form-control" type="text" name="sal" id="sal" placeholder="sal" />
+      		</div>
+      		<div class="form-group">
+      			<button class="btn btn-primary" type="submit">입력</button>
+      			<button class="btn btn-default" type="reset">취소</button>
+      			<button class="btn btn-default" type="button" data-dismiss="modal">뒤로</button>
+      		</div>
+      	</form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>
