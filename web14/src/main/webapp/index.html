@@ -15,6 +15,14 @@
 <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
+$(window).on('popstate',function(e){
+	if(location.hash==''||location.hash=='#home'){
+		$('.navbar a').eq(0).click();
+	}else if(location.hash=='#emp'){
+		$('.navbar a').eq(1).click();
+	}
+	
+});
 var popup2;
 var popup2Init=function(){
 	popup2.find('input').prop('readonly',true);

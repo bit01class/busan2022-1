@@ -16,6 +16,7 @@ public class EmpDeleteController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setCharacterEncoding("application/json");
 		int empno=Integer.parseInt(req.getParameter("empno"));
 		String sql="delete from emp where empno="+empno;
 		try(

@@ -22,6 +22,7 @@ public class EmpUpdateController extends HttpServlet {
 				req.getParameter("ename"),
 				req.getParameter("sal")
 		};
+		resp.setCharacterEncoding("application/json");
 		try(
 			Connection conn=BitMy.getConnection();	
 			Statement stmt=conn.createStatement();
