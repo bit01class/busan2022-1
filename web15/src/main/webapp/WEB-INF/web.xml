@@ -21,7 +21,10 @@
   	<servlet-name>oneEmp</servlet-name>
   	<servlet-class>com.bit.controller.EmpOneController</servlet-class>
   </servlet>
-  
+  <servlet>
+  	<servlet-name>editEmp</servlet-name>
+  	<servlet-class>com.bit.controller.EmpEditController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>index</servlet-name>
   	<url-pattern>/index.html</url-pattern>
@@ -37,5 +40,9 @@
   <servlet-mapping>
   	<servlet-name>oneEmp</servlet-name>
   	<url-pattern>/emp/detail.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>editEmp</servlet-name>
+  	<url-pattern>/emp/edit.html</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,25 @@ import com.bit.util.Mysql;
 
 public class EmpDao {
 	Logger log=Logger.getLogger(this.getClass());
+	
+	public int updateOne(int empno,String ename,int sal,String job,Timestamp hiredate) {
+		String sql="update emp set ename=?,sal=?,job=?,hiredate=? where empno=?";
+		try(
+				Connection conn=Mysql.getConnection();
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+		){
+			pstmt.setString(1, ename);
+			pstmt.setInt(2, sal);
+			pstmt.setString(3, job);
+			pstmt.setTimestamp(4, hiredate);
+			pstmt.setInt(5, empno);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 	
 	public EmpDto getOne(int empno) {
 		String sql="select * from emp where empno=?";
