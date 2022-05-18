@@ -45,4 +45,12 @@
   	<servlet-name>editEmp</servlet-name>
   	<url-pattern>/emp/edit.html</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>delEmp</servlet-name>
+  	<url-pattern>/emp/delete.html</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>delEmp</servlet-name>
+  	<servlet-class>com.bit.controller.EmpDelController</servlet-class>
+  </servlet>
 </web-app>

@@ -16,6 +16,21 @@ import com.bit.util.Mysql;
 public class EmpDao {
 	Logger log=Logger.getLogger(this.getClass());
 	
+	public int deleteOne(int empno){
+		String sql="delete from emp where empno=?";
+		try(
+				Connection conn=Mysql.getConnection();
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+		){
+			pstmt.setInt(1, empno);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
 	public int updateOne(int empno,String ename,int sal,String job,Timestamp hiredate) {
 		String sql="update emp set ename=?,sal=?,job=?,hiredate=? where empno=?";
 		try(
