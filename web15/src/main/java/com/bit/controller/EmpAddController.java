@@ -14,7 +14,7 @@ public class EmpAddController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher rd=req.getRequestDispatcher("add.jsp");
+		RequestDispatcher rd=req.getRequestDispatcher("/emp/add.jsp");
 		rd.forward(req, resp);
 	}
 	
@@ -27,6 +27,6 @@ public class EmpAddController extends HttpServlet {
 		//model
 		EmpDao dao=new EmpDao();
 		dao.insertOne(empno,ename,sal);
-		resp.sendRedirect("list.html");
+		resp.sendRedirect("/web15/emp/list.html");
 	}
 }

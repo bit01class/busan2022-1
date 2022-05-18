@@ -4,9 +4,15 @@ import java.sql.Timestamp;
 
 public class EmpDto {
 	private int empno,sal;
-	private String ename;
+	private String ename,job;
 	private Timestamp hiredate;
 	
+	public String getJob() {
+		return job;
+	}
+	public void setJob(String job) {
+		this.job = job;
+	}
 	public int getEmpno() {
 		return empno;
 	}
@@ -31,10 +37,12 @@ public class EmpDto {
 	public void setHiredate(Timestamp hiredate) {
 		this.hiredate = hiredate;
 	}
-	
 	@Override
 	public String toString() {
-		return "EmpDto [empno=" + empno + ", sal=" + sal + ", ename=" + ename + ", hiredate=" + hiredate + "]";
+		return "EmpDto [empno=" + empno + ", sal=" + sal + ", ename=" + ename + ", job=" + job + ", hiredate="
+				+ hiredate + "]";
 	}
+	
+	
 	
 }
