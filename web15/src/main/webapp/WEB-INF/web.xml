@@ -5,4 +5,21 @@
   <welcome-file-list>
   	<welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  <servlet>
+  	<servlet-name>index</servlet-name>
+  	<servlet-class>com.bit.controller.IndexController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>empList</servlet-name>
+  	<servlet-class>com.bit.controller.EmpListController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>index</servlet-name>
+  	<url-pattern>/index.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>empList</servlet-name>
+  	<url-pattern>/emp/list.html</url-pattern>
+  </servlet-mapping>
 </web-app>
