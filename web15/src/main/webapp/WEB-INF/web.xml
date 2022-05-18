@@ -13,6 +13,10 @@
   	<servlet-name>empList</servlet-name>
   	<servlet-class>com.bit.controller.EmpListController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>addEmp</servlet-name>
+  	<servlet-class>com.bit.controller.EmpAddController</servlet-class>
+  </servlet>
   
   <servlet-mapping>
   	<servlet-name>index</servlet-name>
@@ -21,5 +25,9 @@
   <servlet-mapping>
   	<servlet-name>empList</servlet-name>
   	<url-pattern>/emp/list.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>addEmp</servlet-name>
+  	<url-pattern>/emp/add.html</url-pattern>
   </servlet-mapping>
 </web-app>

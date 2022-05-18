@@ -14,7 +14,11 @@
 <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript">
-
+$(function(){
+	$('button[type="button"]').click(function(){
+		history.back();
+	});
+});
 </script>
 </head> 
 <body>
@@ -42,35 +46,25 @@
 	<div id="content" class="row">
 	  <div class="col-md-12">
 	  	<div class="page-header">
-		  <h2>EMP LIST Page <small>EMP table의 리스트</small></h2>
+		  <h2>EMP Insert Page <small>EMP 추가</small></h2>
 		</div>
-		<p>
-			<a href="add.html" role="button" class="btn btn-primary">입력</a>
-		</p>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>empno</th>
-					<th>ename</th>
-					<th>hiredate</th>
-					<th>sal</th>
-				</tr>
-			</thead>
-			<tbody>
-			<%
-			java.util.List<com.bit.model.EmpDto> list=null;
-			list=(java.util.List<com.bit.model.EmpDto>)request.getAttribute("list");
-			for(com.bit.model.EmpDto bean:list){
-			%>
-				<tr>
-					<td><a href="#"><%=bean.getEmpno() %></a></td>
-					<td><a href="#"><%=bean.getEname() %></a></td>
-					<td><a href="#"><%=bean.getHiredate() %></a></td>
-					<td><a href="#"><%=bean.getSal() %></a></td>
-				</tr>
-			<%} %>
-			</tbody>
-		</table>
+		<form method="post">
+		  <div class="form-group">
+		    <label for="empno">empno</label>
+		    <input type="text" name="empno" class="form-control" id="empno" placeholder="empno">
+		  </div>
+		  <div class="form-group">
+		    <label for="ename">ename</label>
+		    <input type="text" name="ename" class="form-control" id="ename" placeholder="ename">
+		  </div>
+		  <div class="form-group">
+		    <label for="sal">sal</label>
+		    <input type="text" name="sal" class="form-control" id="sal" placeholder="sal">
+		  </div>
+		  <button type="submit" class="btn btn-primary btn-block">입력</button>
+		  <button type="reset" class="btn btn-default btn-block">취소</button>
+		  <button type="button" class="btn btn-default btn-block">뒤로</button>
+		</form>
 	  </div>
 	</div>
 	<div id="footer" class="row">

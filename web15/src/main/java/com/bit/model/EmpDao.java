@@ -1,6 +1,7 @@
 package com.bit.model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,6 +14,21 @@ import com.bit.util.Mysql;
 
 public class EmpDao {
 	Logger log=Logger.getLogger(this.getClass());
+	
+	public void insertOne(int empno,String ename,int sal) {
+		String sql="insert into emp (empno,ename,sal,hiredate) values (?,?,?,now())";
+		try(
+				Connection conn=Mysql.getConnection();
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+				){
+			pstmt.setInt(1, empno);
+			pstmt.setString(2, ename);
+			pstmt.setInt(3, sal);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public List<EmpDto> getList(){
 		List<EmpDto> list=new ArrayList<>();
