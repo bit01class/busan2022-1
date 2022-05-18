@@ -37,13 +37,7 @@ $(function(){
 		    	<a href="../dept/list.html" class="btn btn-default">DEPT</a>
 		    </p>
 		    <p class="navbar-text navbar-right">
-		    	<% if(session.getAttribute("result")!=null){ 
-		    		out.print(session.getAttribute("id").toString()+"님 로그인 중...");
-		    	%>	
-		    		<a href="../login/index.html">LOGOUT</a>
-		    	<%}else{ %>
-		    		<a href="../login/index.html">LOGIN</a>
-		    	<%} %>
+		    	<a href="../login/index.html">LOGIN</a>
 		    </p>
 		  </div>
 		</nav>
@@ -52,35 +46,26 @@ $(function(){
 	<div id="content" class="row">
 	  <div class="col-md-12">
 	  	<div class="page-header">
-		  <h2>EMP Detail Page <small>상세보기</small></h2>
+		  <h2>Login Page <small>로그인 페이지</small></h2>
 		</div>
-		<%
-		com.bit.model.EmpDto bean=(com.bit.model.EmpDto)request.getAttribute("emp");
-		%>
 		<form method="post">
 		  <div class="form-group">
 		    <label for="empno">empno</label>
-		    <input type="text" name="empno" value="<%=bean.getEmpno() %>" class="form-control" id="empno" placeholder="empno" readonly/>
+		    <input type="text" name="empno" class="form-control" id="empno" placeholder="empno">
 		  </div>
 		  <div class="form-group">
 		    <label for="ename">ename</label>
-		    <input type="text" name="ename" value="<%=bean.getEname() %>" class="form-control" id="ename" placeholder="ename" readonly/>
+		    <input type="text" name="ename" class="form-control" id="ename" placeholder="ename">
 		  </div>
 		  <div class="form-group">
-		    <label for="sal">sal</label>
-		    <input type="text" name="sal" value="<%=bean.getSal() %>" class="form-control" id="sal" placeholder="sal" readonly/>
-		  </div>
-		  <div class="form-group">
-		    <label for="hiredate">hiredate</label>
-		    <input type="text" name="hiredate" value="<%=bean.getHiredate() %>" class="form-control" id="hiredate" placeholder="hiredate" readonly/>
-		  </div>
-		  <div class="form-group">
-		    <label for="job">job</label>
-		    <input type="text" name="job" value="<%=bean.getJob() %>" class="form-control" id="job" placeholder="job" readonly/>
-		  </div>
-		  <a href="edit.html?idx=<%=bean.getEmpno() %>" role="button" class="btn btn-primary btn-block">수정</a>
-		  <a href="delete.html?idx=<%=bean.getEmpno() %>" role="button" class="btn btn-danger btn-block">삭제</a>
+		  <button type="submit" class="btn btn-primary btn-block">입력</button>
+		  <button type="reset" class="btn btn-default btn-block">취소</button>
 		  <button type="button" class="btn btn-default btn-block">뒤로</button>
+		  </div>
+		  
+		  <div class="form-group">
+		  	<p>회원가입은 <a href="#">여기</a>를 이용</p>
+		  </div>
 		</form>
 	  </div>
 	</div>

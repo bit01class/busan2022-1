@@ -42,7 +42,13 @@ $(function(){
 		    	<a href="../dept/list.html" class="btn btn-default">DEPT</a>
 		    </p>
 		    <p class="navbar-text navbar-right">
-		    	<a href="../login/index.html">LOGIN</a>
+		    	<% if(session.getAttribute("result")!=null){ 
+		    		out.print(session.getAttribute("id").toString()+"님 로그인 중...");
+		    	%>	
+		    		<a href="../login/index.html">LOGOUT</a>
+		    	<%}else{ %>
+		    		<a href="../login/index.html">LOGIN</a>
+		    	<%} %>
 		    </p>
 		  </div>
 		</nav>
@@ -64,7 +70,7 @@ $(function(){
 		        <p>One fine body&hellip;</p>
 		      </div>
 		      <div class="modal-footer">
-		        <form method="post">
+		        <form method="post"><%System.out.println(request.hashCode()); %>
 		        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 		        <input type="hidden" name="idx" value="<%=request.getParameter("idx") %>" />
 		        <button type="submit" class="btn btn-primary">삭제</button>
