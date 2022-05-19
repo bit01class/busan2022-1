@@ -60,7 +60,7 @@
 		  <%
 		  for(EmpDto bean : (List<EmpDto>)request.getAttribute("list")){
 		  %>
-		  <a href="#" class="list-group-item">
+		  <a href="empOne.html?empno=<%=bean.getEmpno() %>" class="list-group-item">
 		    <span class="badge"><%=bean.getDeptno() %></span>
 		    <h4 class="list-group-item-heading"><%=bean.getEname()+" ("+bean.getEmpno()+")" %></h4>
 		    <p class="list-group-item-text"><%=bean.getHiredate() %></p>

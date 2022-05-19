@@ -23,9 +23,17 @@
 		<url-pattern>/empAdd.html</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>index</servlet-name>
+		<servlet-name>empOne</servlet-name>
 		<url-pattern>/empOne.html</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>empDel</servlet-name>
+		<url-pattern>/delEmp.html</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>empDel</servlet-name>
+		<servlet-class>com.bit.emp.controller.DelController</servlet-class>
+	</servlet>
 	<servlet>
 		<servlet-name>index</servlet-name>
 		<servlet-class>com.bit.controller.IndexController</servlet-class>
@@ -37,6 +45,10 @@
 	<servlet>
 		<servlet-name>empAdd</servlet-name>
 		<servlet-class>com.bit.emp.controller.AddController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>empOne</servlet-name>
+		<servlet-class>com.bit.emp.controller.EmpController</servlet-class>
 	</servlet>
 </web-app>
 

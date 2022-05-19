@@ -16,8 +16,22 @@
 <script type="text/javascript">
 $(function(){
 	$('.btn-group.btn-group-lg').eq(2).hide();
-
-	//$('.btn-group.btn-group-lg').eq(2).show().prev().hide();
+	$('#empno,#ename,#sal').prop('readonly',true);
+	$('#content form').one('submit',function(e){
+		e.preventDefault();
+		$('.page-header>h1').html($('.page-header>h1').html().replace('상세','수정'));
+		$('#ename,#sal').removeProp('readonly');
+		$('.btn-group.btn-group-lg').eq(2).show().prev().hide();
+	});
+	$('button').click(function(e){
+		if($(e.target).html()=='삭제'){
+			$.post('delEmp.html','empno=<%=request.getParameter("empno")%>',function(){
+				location.href='./emp.html';
+			});
+		}
+		
+	});
+	if('<%=request.getParameter("sal")%>'!='null'){$('button[type="submit"]').click();}
 });
 </script>
 </head>
@@ -54,26 +68,27 @@ $(function(){
 	<div class="row">
 	  <div id="content" class="col-xs-12 col-md-10">
 	  <!--  -->
+	  <jsp:useBean id="bean" class="com.bit.emp.model.EmpDto" scope="request"></jsp:useBean>
 	    <div class="page-header">
-		  <h1>상세 페이지 <small>EMP ()</small></h1>
+		  <h1>상세 페이지 <small>EMP (<jsp:getProperty property="empno" name="bean"/>)</small></h1>
 		</div>
 		<form class="form-horizontal" method="post">
 		  <div class="form-group">
 		    <label for="empno" class="col-sm-2 control-label">empno</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="empno" class="form-control" id="empno" placeholder="empno">
+		      <input type="text" name="empno" class="form-control" id="empno" placeholder="empno" value="<%=request.getParameter("empno")%>">
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="ename" class="col-sm-2 control-label">ename</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="ename" class="form-control" id="ename" placeholder="ename">
+		      <input type="text" name="ename" class="form-control" id="ename" placeholder="ename" value="<%=request.getParameter("ename")==null?bean.getEname():request.getParameter("ename")%>">
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="sal" class="col-sm-2 control-label">sal</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="sal" class="form-control" id="sal" placeholder="sal">
+		      <input type="text" name="sal" class="form-control" id="sal" placeholder="sal" value="<%=request.getParameter("sal")==null?bean.getSal():request.getParameter("sal")%>">
 		    </div>
 		  </div>
 		  <div class="form-group">
