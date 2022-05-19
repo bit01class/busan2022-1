@@ -56,13 +56,14 @@
 		    <h4 class="list-group-item-heading">ename(empno)</h4>
 		    <p class="list-group-item-text">hiredate</p>
 		  </div>
+		  <%@ page import="java.util.List,com.bit.emp.model.*" %>
 		  <%
-		  for(int num:new int[]{1,2,3,4}){
+		  for(EmpDto bean : (List<EmpDto>)request.getAttribute("list")){
 		  %>
 		  <a href="#" class="list-group-item">
-		    <span class="badge"><%=num %></span>
-		    <h4 class="list-group-item-heading"><%="제목"+num %></h4>
-		    <p class="list-group-item-text"><%="item"+num %></p>
+		    <span class="badge"><%=bean.getDeptno() %></span>
+		    <h4 class="list-group-item-heading"><%=bean.getEname()+" ("+bean.getEmpno()+")" %></h4>
+		    <p class="list-group-item-text"><%=bean.getHiredate() %></p>
 		  </a>
 		  <%
 		  }

@@ -15,7 +15,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<%if(request.getAttribute("err")!=null){ %>
+<div class="alert alert-danger alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>ERROR!</strong> <%=request.getAttribute("err") %></div>
+<%} %>
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -54,19 +59,19 @@
 		  <div class="form-group">
 		    <label for="empno" class="col-sm-2 control-label">empno</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="empno" class="form-control" id="empno" placeholder="empno">
+		      <input type="text" name="empno" class="form-control" id="empno" placeholder="empno" value="<%=request.getParameter("empno")==null?"":request.getParameter("empno")%>">
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="ename" class="col-sm-2 control-label">ename</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="ename" class="form-control" id="ename" placeholder="ename">
+		      <input type="text" name="ename" class="form-control" id="ename" placeholder="ename"  value="<%=request.getParameter("ename")==null?"":request.getParameter("ename")%>">
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="sal" class="col-sm-2 control-label">sal</label>
 		    <div class="col-sm-10">
-		      <input type="text" name="sal" class="form-control" id="sal" placeholder="sal">
+		      <input type="text" name="sal" class="form-control" id="sal" placeholder="sal"  value="<%=request.getParameter("sal")==null?"":request.getParameter("sal")%>">
 		    </div>
 		  </div>
 		  <div class="form-group">
