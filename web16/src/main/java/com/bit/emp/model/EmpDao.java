@@ -77,8 +77,30 @@ public class EmpDao {
 			if(Mysql.getConnection()!=null)Mysql.getConnection().close();
 		}
 	}
-	public void updateOne() {}
-	public void deleteOne() {}
+	public int updateOne(EmpDto bean) throws SQLException {
+		String sql="update emp set ename=?,sal=?,hiredate=now() where empno=?";
+		try {
+			pstmt=Mysql.getConnection().prepareStatement(sql);
+			pstmt.setString(1, bean.getEname());
+			pstmt.setInt(2, bean.getSal());
+			pstmt.setInt(3, bean.getEmpno());
+			return pstmt.executeUpdate();
+		}finally {
+			if(pstmt!=null)pstmt.close();
+			if(Mysql.getConnection()!=null)Mysql.getConnection().close();
+		}
+	}
+	public int deleteOne(int num) throws SQLException {
+		String sql="delete from emp where empno=?";
+		try {
+			pstmt=Mysql.getConnection().prepareStatement(sql);
+			pstmt.setInt(1, num);
+			return pstmt.executeUpdate();
+		}finally {
+			if(pstmt!=null)pstmt.close();
+			if(Mysql.getConnection()!=null)Mysql.getConnection().close();
+		}
+	}
 	
 }
 
