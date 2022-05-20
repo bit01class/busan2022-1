@@ -1,6 +1,7 @@
 package com.bit.controller;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +23,17 @@ public class DetailController extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		Map<String,String[]> params=req.getParameterMap(); 
+		EmpDao dao=new EmpDao();
+		dao.updateOne(params);
 		doGet(req,resp);
 	}
 }
+
+
+
+
+
+
+
+

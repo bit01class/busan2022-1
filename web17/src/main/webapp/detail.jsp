@@ -7,8 +7,14 @@
 <title>Insert title here</title>
 <%@ include file="template/head.jspf" %>
 <script type="text/javascript">
-var obj=<%=request.getAttribute("json")%>;
-
+//var obj=<%=request.getAttribute("json")%>;
+$(function(){
+	$('form').one('submit',function(e){
+		$(e.target).find('input').removeProp('readonly');
+		$('.page-header>h1').html('<h1>수정페이지 <small>EMP Update</small></h1>');
+		return false;
+	});
+});
 </script>
 </head>
 <body>
@@ -41,7 +47,7 @@ com.bit.model.EmpDto bean=(com.bit.model.EmpDto)request.getAttribute("bean");
 	  </div>
   </div>
   <%} %>
-  <input type="hidden" name="id" value="<%=bean.getId()%>">
+  <input type="hidden" name="_id" value="<%=bean.getId()%>">
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <div class="btn-group" role="group" aria-label="...">
