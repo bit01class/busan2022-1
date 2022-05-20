@@ -22,11 +22,11 @@
     <p class="list-group-item-text">...</p>
   </span>
   <%
-  for(java.util.Map<String,Object> bean:(java.util.List<java.util.Map<String,Object>>)request.getAttribute("list")){
+  for(com.bit.model.EmpDto bean:(java.util.List<com.bit.model.EmpDto>)request.getAttribute("list")){
   %>
-  <a href="detail.html?idx=<%=bean.get("_id") %>" class="list-group-item">
-    <h4 class="list-group-item-heading"><%=bean.get("ename") %></h4>
-    <p class="list-group-item-text"><%=bean.get("empno") %></p>
+  <a href="detail.html?idx=<%=bean.getId() %>" class="list-group-item">
+    <h4 class="list-group-item-heading"><%=bean.getEname() %> (<%=bean.getEmpno() %>)</h4>
+    <p class="list-group-item-text"><%=bean.getItem()%></p>
   </a>
   <%} %>
 </div>

@@ -1,6 +1,9 @@
 package com.bit.controller;
 
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,10 +24,16 @@ public class AddController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		int empno=Integer.parseInt(req.getParameter("empno"));
-		String ename=req.getParameter("ename");
+		Map<String,String[]> items=req.getParameterMap();
 		EmpDao dao=new EmpDao();
-		dao.insertOne(empno,ename);
+		dao.insertOne(items);
 		resp.sendRedirect("./list.html");
 	}
 }
+
+
+
+
+
+
+

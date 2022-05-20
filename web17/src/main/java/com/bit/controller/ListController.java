@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bit.model.EmpDao;
+import com.bit.model.EmpDto;
 
 @WebServlet("/emp/list.html")
 public class ListController extends HttpServlet {
@@ -18,7 +19,7 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		EmpDao dao=new EmpDao();
-		List<Map<String,Object>> list=dao.selectAll();
+		List<EmpDto> list=dao.selectAll();
 		req.setAttribute("list", list);
 		req.getRequestDispatcher("/list.jsp").forward(req, resp);
 	}
