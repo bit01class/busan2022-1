@@ -9,13 +9,18 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.bson.BsonDocument;
 import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 import com.mongodb.BasicDBObject;
+import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 
 
 
@@ -87,6 +92,29 @@ public class EmpDao {
 		}
 		
 		return list;
+	}
+	
+	public EmpDto selectOne(String idx) {
+		// {_id:ObjectId('628729eb82344039e4f4403e')}
+		try {
+			client=new MongoClient(addr);
+			MongoDatabase db=client.getDatabase("testDB");
+			MongoCollection<Document> coll = db.getCollection("emp");
+			
+			Bson filter=BsonDocument.parse("{_id:ObjectId('628729eb82344039e4f4403e')}");
+//			Bson filter=Filters.eq("_id", new ObjectId(idx));
+//			Bson filter=new BasicDBObject("_id",new ObjectId(idx));
+			Document doc = coll.find(filter).first();
+//			return doc.toJson();
+			EmpDto bean=new EmpDto();
+			bean.setId(doc.getObjectId("_id"));
+			bean.setEmpno(Integer.parseInt(doc.get("empno").toString()));
+			bean.setEname(doc.getString("ename"));
+			bean.setItem(doc.getList("item", String.class));
+			return bean;
+		}finally {
+			if(client!=null)client.close();
+		}
 	}
 }
 

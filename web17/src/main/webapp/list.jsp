@@ -26,7 +26,15 @@
   %>
   <a href="detail.html?idx=<%=bean.getId() %>" class="list-group-item">
     <h4 class="list-group-item-heading"><%=bean.getEname() %> (<%=bean.getEmpno() %>)</h4>
-    <p class="list-group-item-text"><%=bean.getItem()%></p>
+    <%
+    if (bean.getItem()!=null){
+    	for(String item: (java.util.List<String>)bean.getItem()){ 
+    %>
+    <p class="list-group-item-text"><%=item%></p>
+    <%
+    		}
+    }
+    %>
   </a>
   <%} %>
 </div>
