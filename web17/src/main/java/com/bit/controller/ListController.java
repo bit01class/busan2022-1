@@ -1,6 +1,8 @@
 package com.bit.controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +18,8 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		EmpDao dao=new EmpDao();
-		dao.selectAll();
+		List<Map<String,Object>> list=dao.selectAll();
+		req.setAttribute("list", list);
 		req.getRequestDispatcher("/list.jsp").forward(req, resp);
 	}
 }
