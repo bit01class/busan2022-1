@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+$(function(){
+  $('form').one('submit',function(){
+    $('form input:gt(0)').removeProp('readonly');
+    $('.page-header').html('Dept Update');
+    $('button[type="submit"]')
+      .next()
+        .attr('type','reset')
+        .removeClass('btn-danger')
+        .addClass('btn-default')
+        .html('취소');
+    return false;
+  });
+  $('button[type="submit"]')
+    .next()
+    .click(function(e){
+      if(e.target.innerHTML=='삭제'){
+        $.post('/emp/delete',$.param({empno:$('#empno').val()}),function(data){
+          location.href='list';
+        });
+      }
+    });
+});
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">비트교육센터</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="/emp/list">EMP</a></li>
+        <li><a href="/dept/list">DEPT</a></li>
+      </ul>
+      <p class="navbar-text navbar-right"><a href="/login/login" class="navbar-link">Login</a></p>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+<h2 class="page-header">Dept Detail</h2>
+<form class="form-horizontal" method="post">
+  <input type="hidden" name="_id" value="<%=bean._id%>"/>
+  <div class="form-group">
+    <label for="empno" class="col-sm-2 control-label">empno</label>
+    <div class="col-sm-10">
+      <input type="text" name="empno" value="<%=bean.empno %>" class="form-control" id="empno" placeholder="empno" readonly/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="ename" class="col-sm-2 control-label">ename</label>
+    <div class="col-sm-10">
+      <input type="text" name="ename" value="<%=bean.ename %>" class="form-control" id="ename" placeholder="ename" readonly/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="sal" class="col-sm-2 control-label">sal</label>
+    <div class="col-sm-10">
+      <input type="text" name="sal" value="<%=bean.sal %>" class="form-control" id="sal" placeholder="sal" readonly/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">수정</button>
+      <button type="button" class="btn btn-danger">삭제</button>
+      <button type="button" class="btn btn-default">뒤로</button>
+    </div>
+  </div>
+</form>
+</div>
+</body>
+</html>
