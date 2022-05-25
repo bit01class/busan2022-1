@@ -9,7 +9,8 @@
 </head>
 <body>
 <%- include('../template/menu'); %>
-<form class="form-horizontal" action="./<%=bean.EMPNO%>?_method=put" method="post">
+<form class="form-horizontal" method="post">
+    <input type="hidden" name="_method" value="put"/>
     <div class="form-group">
       <label for="empno" class="col-sm-2 control-label">empno</label>
       <div class="col-sm-10">
@@ -44,10 +45,24 @@
         $('form button').eq(2).click();
       };
       init();
-      $('form').one('submit',function(e){
+      var edit=function(e){
         $('form button').eq(1).toggle().next().toggle().next().click(init);
         $('form').find('input').removeProp('readonly').first().prop('readonly',true);
           return false;
+      };
+      $('form').one('submit',edit);
+      $('form button').eq(1).click(function(e){
+          $('form').off('submit',edit);
+          $('form input').first().val('delete');
+          $('form').submit();
+        //   console.log('/mysql/'+$('form input').eq(1).val());
+        //   $.ajax('/mysql/1011',{
+        //       method:'delete',
+        //       contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+        //       success:function(){
+        //           location.href='./';
+        //       }
+        //   });
       });
   </script>
 <%- include('../template/footer'); %>    
