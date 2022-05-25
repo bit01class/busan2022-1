@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('../template/header'); %>
+</head>
+<body>
+<%- include('../template/menu'); %>
+<form class="form-horizontal" method="post">
+    <input type="hidden" name="_method" value="put"/>
+    <div class="form-group">
+      <label for="empno" class="col-sm-2 control-label">empno</label>
+      <div class="col-sm-10">
+        <input type="text" value="<%=bean.empno%>" name="empno" class="form-control" id="empno" placeholder="empno" readonly/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ename" class="col-sm-2 control-label">ename</label>
+      <div class="col-sm-10">
+        <input type="text" value="<%=bean.ename%>" name="ename" class="form-control" id="ename" placeholder="ename" readonly/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="sal" class="col-sm-2 control-label">sal</label>
+      <div class="col-sm-10">
+        <input type="text" value="<%=bean.sal%>" name="sal" class="form-control" id="sal" placeholder="sal" readonly/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">수정</button>
+        <button type="button" class="btn btn-danger">삭제</button>
+        <button type="reset" class="btn btn-default">취소</button>
+        <button type="button" class="btn btn-default">뒤로</button>
+      </div>
+    </div>
+  </form>
+  <script type="text/javascript">
+      var init=function (){
+        $('form button').eq(1).show().next().hide();
+        $('form').find('input').prop('readonly',true);
+        $('form button').eq(2).click();
+      };
+      init();
+      var edit=function(e){
+        $('form button').eq(1).toggle().next().toggle().next().click(init);
+        $('form').find('input').removeProp('readonly').first().prop('readonly',true);
+          return false;
+      };
+      $('form').one('submit',edit);
+      $('form button').eq(1).click(function(e){
+          $('form').off('submit',edit);
+          $('form input').first().val('delete');
+          $('form').submit();
+        //   console.log('/mysql/'+$('form input').eq(1).val());
+        //   $.ajax('/mysql/1011',{
+        //       method:'delete',
+        //       contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+        //       success:function(){
+        //           location.href='./';
+        //       }
+        //   });
+      });
+  </script>
+<%- include('../template/footer'); %>    
+</body>
+</html>

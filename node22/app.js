@@ -36,7 +36,7 @@ app.use(methodOverride(function (req, res) {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/mysql', require('./routes/mysql'));
-
+app.use('/mongoose',require('./routes/mongoose'));
 
 
 // catch 404 and forward to error handler

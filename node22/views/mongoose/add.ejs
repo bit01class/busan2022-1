@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+        
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+        
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">비트교육센터</a>
+          </div>
+      
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+              <li><a href="/mysql/">Mysql</a></li>
+              <li><a href="/mongo/">MongoDB</a></li>
+              <li><a href="/mongoose/">Mongoose</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    
+    
+      <div class="container">
+        <div id="content" class="row">
+          <div class="col-md-12">
+            <h2 class="page-header">입력페이지</h2>
+            <form class="form-horizontal" method="post" action="./">
+                <div class="form-group">
+                  <label for="empno" class="col-sm-2 control-label">empno</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="empno" class="form-control" id="empno" placeholder="empno">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="ename" class="col-sm-2 control-label">ename</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="ename" class="form-control" id="ename" placeholder="ename">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="sal" class="col-sm-2 control-label">sal</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="sal" class="form-control" id="sal" placeholder="sal">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">입력</button>
+                    <button type="reset" class="btn btn-default">취소</button>
+                    <button type="button" class="btn btn-default">뒤로</button>
+                  </div>
+                </div>
+              </form>
+        </div>
+    </div>
+    <div id="footer" class="row">
+        <div class="col-md-offset-2 col-md-2">
+        <img src="https://www.bitacademy.com/img/logo_footer.png"/>
+        </div>
+        <div class="col-md-8">
+        <address>
+            <strong>비트교육센터</strong><br>
+            서울특별시 서초구 서초대로74길33 비트빌 3층 <br>
+            <abbr title="Phone">tel:</abbr> 02-3486-7890 
+        </address>
+        
+        <address>
+            <strong>Copyright by bitacademy co.ltd. All rights reserved. </strong><br>
+            <a href="mailto:#">webmaster@bitacademy.com</a>
+        </address>
+        </div>
+    </div>
+</div>
+            
+</body>
+</html>
