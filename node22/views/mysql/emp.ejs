@@ -9,8 +9,47 @@
 </head>
 <body>
 <%- include('../template/menu'); %>
-<h2><%=bean.EMPNO%></h2>
-<p><%=bean.ENAME%></p>
+<form class="form-horizontal" action="./<%=bean.EMPNO%>?_method=put" method="post">
+    <div class="form-group">
+      <label for="empno" class="col-sm-2 control-label">empno</label>
+      <div class="col-sm-10">
+        <input type="text" value="<%=bean.EMPNO%>" name="empno" class="form-control" id="empno" placeholder="empno" readonly/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ename" class="col-sm-2 control-label">ename</label>
+      <div class="col-sm-10">
+        <input type="text" value="<%=bean.ENAME%>" name="ename" class="form-control" id="ename" placeholder="ename" readonly/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="sal" class="col-sm-2 control-label">sal</label>
+      <div class="col-sm-10">
+        <input type="text" value="<%=bean.SAL%>" name="sal" class="form-control" id="sal" placeholder="sal" readonly/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">수정</button>
+        <button type="button" class="btn btn-danger">삭제</button>
+        <button type="reset" class="btn btn-default">취소</button>
+        <button type="button" class="btn btn-default">뒤로</button>
+      </div>
+    </div>
+  </form>
+  <script type="text/javascript">
+      var init=function (){
+        $('form button').eq(1).show().next().hide();
+        $('form').find('input').prop('readonly',true);
+        $('form button').eq(2).click();
+      };
+      init();
+      $('form').one('submit',function(e){
+        $('form button').eq(1).toggle().next().toggle().next().click(init);
+        $('form').find('input').removeProp('readonly').first().prop('readonly',true);
+          return false;
+      });
+  </script>
 <%- include('../template/footer'); %>    
 </body>
 </html>
