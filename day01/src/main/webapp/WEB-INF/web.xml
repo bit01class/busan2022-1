@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
+  <display-name>Archetype Created Web Application</display-name>
+  
+  
+  <filter>
+  	<filter-name>filter1</filter-name>
+  	<filter-class>com.bit.frame.filter.Ex01Filter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>filter1</filter-name>
+  	<url-pattern>/ex01.bit</url-pattern>
+  </filter-mapping>
+  <!-- 
+  <filter>
+  	<filter-name>filter2</filter-name>
+  	<filter-class>com.bit.frame.filter.Ex02Filter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>filter2</filter-name>
+  	<url-pattern>/ex01.bit</url-pattern>
+  </filter-mapping>
+   -->
+  
+  <servlet>
+  	<servlet-name>ex01</servlet-name>
+  	<servlet-class>com.bit.frame.controller.Ex01Controller</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ex01</servlet-name>
+  	<url-pattern>/ex01.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ex01</servlet-name>
+  	<url-pattern>/ex01.bit</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
