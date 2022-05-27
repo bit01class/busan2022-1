@@ -9,41 +9,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bit.frame.model.entity.EmpVo;
+import com.bit.frame.util.QueryTemplate;
 import com.bit.frame.util.UpdateTemplate;
 
 public class EmpDao {
 
 	public List<EmpVo> selectAll() throws SQLException{
 		String sql="select * from emp";
-		return executeQuery(sql);
+		QueryTemplate template=new QueryTemplate() {
+
+			@Override
+			public Object rowMapper(ResultSet rs) throws SQLException  {
+				EmpVo bean=new EmpVo();
+				bean.setEmpno(rs.getInt("empno"));
+				bean.setEname(rs.getString("ename"));
+				bean.setJob(rs.getString("job"));
+				bean.setSal(rs.getInt("sal"));
+				return bean;
+			}
+			
+		};
+		template.setConn(getConnection());
+		return template.executeQuery(sql);
 	}
 	
-	public List executeQuery(String sql) throws SQLException {
-		List list=new ArrayList();
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		////
-		try {
-			conn=getConnection();
-			pstmt=conn.prepareStatement(sql);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				list.add(rowMapper(rs));
-			}
-		}finally {
-			close(conn,pstmt,rs);
-		}
-		return list;
-	}
-	public Object rowMapper(ResultSet rs) throws SQLException {
-		EmpVo bean=new EmpVo();
-		bean.setEmpno(rs.getInt("empno"));
-		bean.setEname(rs.getString("ename"));
-		bean.setJob(rs.getString("job"));
-		bean.setSal(rs.getInt("sal"));
-		return bean;
-	}
+	
 
 	public void insertOne(int empno, String ename, String job, int sal) throws SQLException {
 		String sql="insert into emp (empno,ename,job,sal) values (?,?,?,?)";
@@ -91,6 +81,26 @@ public class EmpDao {
 		if(rs!=null)rs.close();
 		if(pstmt!=null)pstmt.close();
 		if(conn!=null)conn.close();
+	}
+
+
+
+	public EmpVo selectOne(int empno) throws SQLException {
+		String sql="select * from emp where empno="+empno;
+		QueryTemplate template=new QueryTemplate() {
+			
+			@Override
+			public Object rowMapper(ResultSet rs) throws SQLException {
+				EmpVo bean=new EmpVo();
+				bean.setEmpno(rs.getInt("empno"));
+				bean.setEname(rs.getString("ename"));
+				bean.setJob(rs.getString("job"));
+				bean.setSal(rs.getInt("sal"));
+				return bean;
+			}
+		};
+		template.setConn(getConnection());
+		return (EmpVo) template.queryForObject(sql);
 	}
 }
 

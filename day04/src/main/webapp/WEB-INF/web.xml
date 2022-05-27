@@ -10,6 +10,10 @@
   	<servlet-name>index</servlet-name>
   	<servlet-class>com.bit.frame.util.FrontController</servlet-class>
   	<init-param>
+  		<param-name>/detail.bit</param-name>
+  		<param-value>com.bit.frame.controller.DetailController</param-value>
+  	</init-param>
+  	<init-param>
   		<param-name>/delete.bit</param-name>
   		<param-value>com.bit.frame.controller.DeleteController</param-value>
   	</init-param>
