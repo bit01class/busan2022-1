@@ -16,7 +16,7 @@
 <a href="add.bit">입력</a>
 <%@ page import="com.bit.frame.model.entity.*,java.util.List" %>
 <%for(EmpVo bean: (List<EmpVo>)request.getAttribute("list")){ %>
-<div><%=bean %></div>
+<div><a href="delete.bit?empno=<%=bean.getEmpno()%>"><%=bean %></a></div>
 <%} %>
 
 </body>

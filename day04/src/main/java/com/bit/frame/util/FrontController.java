@@ -2,6 +2,7 @@ package com.bit.frame.util;
 
 import java.awt.List;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -29,12 +30,12 @@ public class FrontController extends HttpServlet {
 		prefix="/WEB-INF/views/";
 		suffix=".jsp";
 		
-		
 		Map<String,String> mapping=new HashMap<>();
-		mapping.put("/index.bit", "com.bit.frame.controller.IndexController");
-		mapping.put("/list.bit", "com.bit.frame.controller.ListController");
-		mapping.put("/login.bit", "com.bit.frame.controller.LoginController");
-		mapping.put("/add.bit", "com.bit.frame.controller.AddController");
+		Enumeration<String> names = getInitParameterNames();
+		while(names.hasMoreElements()) {
+			String url=names.nextElement();
+			mapping.put(url, getInitParameter(url));
+		}
 		
 		Set<String> keys = mapping.keySet();
 		try {
@@ -48,7 +49,6 @@ public class FrontController extends HttpServlet {
 	protected void doDo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url=req.getRequestURI().substring(req.getContextPath().length());
 		String path="";
-		
 		MyController controller=handlerMapping.get(url);
 		if(controller==null) {
 			resp.sendError(404);
