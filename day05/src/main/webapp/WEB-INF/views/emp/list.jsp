@@ -19,21 +19,39 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
 	<div class="navbar-header">
-	  <a class="navbar-brand" href="./index.bit">비트교육센터</a>
+	  <a class="navbar-brand" href="../index.bit">비트교육센터</a>
 	</div>
 	<p class="navbar-text">
-		<a href="./index.bit">HOME</a>
-		<a href="./emp/index.bit">EMP</a>
-		<a href="./DEPT/index.bit">DEPT</a>
+		<a href="../index.bit">HOME</a>
+		<a href="../emp/index.bit">EMP</a>
+		<a href="../DEPT/index.bit">DEPT</a>
 	</p>
   </div>
 </nav>
 <div class="container">
-	<div class="jumbotron">
-	  <h1>Index page!</h1>
-	  <p>...</p>
-	  </div>
+	<div class="page-header">
+	  <h1>List Page <small>emp list</small></h1>
 	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>empno</th>
+				<th>ename</th>
+				<th>sal</th>
+			</tr>
+		</thead>
+		<tbody>
+		<%@ page import="com.bit.emp.model.*,java.util.List" %>
+		<% for(EmpVo bean:(List<EmpVo>)request.getAttribute("list")){%>
+			<tr>
+				<td><a href="#"><%=bean.getEmpno() %></a></td>
+				<td><a href="#"><%=bean.getEname() %></a></td>
+				<td><a href="#"><%=bean.getSal() %></a></td>
+			</tr>
+		<%} %>
+		</tbody>
+	</table>
+</div>
 </body>
 </html>
 
