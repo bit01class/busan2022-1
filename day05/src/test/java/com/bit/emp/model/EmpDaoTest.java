@@ -28,7 +28,7 @@ public class EmpDaoTest {
 	@Test
 	public void testInsertOne() throws SQLException {
 //		dao.conn.setAutoCommit(false);
-		EmpVo target=new EmpVo(1012,1000,"test","tester");
+		EmpVo target=new EmpVo(1015,1000,"test","tester");
 		dao.insertOne(target);
 		
 //		dao=new EmpDao();
