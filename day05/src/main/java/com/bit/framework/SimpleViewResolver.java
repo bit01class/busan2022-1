@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SimpleViewResolver {
+public class SimpleViewResolver implements BitViewResolver {
 	String prefix;
 	String suffix;
 

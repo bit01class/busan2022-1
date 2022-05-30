@@ -10,6 +10,10 @@
   <servlet>
   	<servlet-name>framework</servlet-name>
   	<servlet-class>com.bit.framework.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>bit</param-name>
+  		<param-value>/WEB-INF/bit.properties</param-value>
+  	</init-param>
   </servlet>
   <servlet-mapping>
   	<servlet-name>framework</servlet-name>
