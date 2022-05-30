@@ -30,29 +30,49 @@
 </nav>
 <div class="container">
 	<div class="page-header">
-	  <h1>List Page <small>emp list</small></h1>
+	  <h1>Detail Page <small>${bean.empno }</small></h1>
 	</div>
-	<a href="add.bit" class="btn btn-primary btn-block" role="button">입력</a>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>empno</th>
-				<th>ename</th>
-				<th>sal</th>
-			</tr>
-		</thead>
-		<tbody>
-		<%@ page import="com.bit.emp.model.*,java.util.List" %>
-		<% for(EmpVo bean:(List<EmpVo>)request.getAttribute("list")){%>
-			<tr>
-				<td><a href="detail.bit?empno=<%=bean.getEmpno() %>"><%=bean.getEmpno() %></a></td>
-				<td><a href="detail.bit?empno=<%=bean.getEmpno() %>"><%=bean.getEname() %></a></td>
-				<td><a href="detail.bit?empno=<%=bean.getEmpno() %>"><%=bean.getSal() %></a></td>
-			</tr>
-		<%} %>
-		</tbody>
-	</table>
+	<form class="form-horizontal" action="insert.bit" method="post">
+	  <div class="form-group">
+	    <label for="empno" class="col-sm-2 control-label">empno</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" name="empno" id="empno" value="${bean.empno }">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="ename" class="col-sm-2 control-label">ename</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" name="ename" id="ename" value="${bean.ename }">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="sal" class="col-sm-2 control-label">sal</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" name="sal" id="sal" value="${bean.sal }">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="job" class="col-sm-2 control-label">job</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" name="job" id="job" value="${bean.job }">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+	      <button type="submit" class="btn btn-default">수정</button>
+	      <button type="reset" class="btn btn-default">취소</button>
+	      <button type="button" class="btn btn-default" onclick="history.back();">뒤로</button>
+	    </div>
+	  </div>
+	</form>
 </div>
+<script type="text/javascript">
+	$('input').prop('readonly',true);
+	$('form').one('submit',function(){
+		$('input').filter(':gt(0)').removeProp('readonly');
+		return false;
+	});
+</script>
 </body>
 </html>
 

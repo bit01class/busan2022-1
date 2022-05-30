@@ -11,7 +11,7 @@ import com.bit.framework.RowMapper;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 public class EmpDao {
-	DataSource dataSoruce;
+	DataSource dataSource;
 	
 	public EmpDao(){
 		
@@ -22,29 +22,53 @@ public class EmpDao {
 		dataSource.setUrl(url);
 		dataSource.setUser(user);
 		dataSource.setPassword(password);
-		this.dataSoruce=dataSource;
+		this.dataSource=dataSource;
 		
 	}
 
 	public List<EmpVo> selectAll() throws SQLException {
 		String sql="select * from emp";
-		JdbcTemplate template=new JdbcTemplate(dataSoruce);
-		RowMapper rowMapper=new RowMapper() {
-			public Object rows(ResultSet rs) throws SQLException{
+		JdbcTemplate<EmpVo> template=new JdbcTemplate<EmpVo>(dataSource);
+		
+		
+		RowMapper<EmpVo> mapper=new RowMapper<EmpVo>() {
+			
+			@Override
+			public EmpVo rows(ResultSet rs) throws SQLException {
 				return new EmpVo(
 						rs.getInt("empno"),rs.getInt("sal"),rs.getString("ename"),rs.getString("job")
 						);
 			}
 		};
-		return template.queryForList(sql,rowMapper,new Object[]{});
+		return template.queryForList(sql, mapper);
 	}
-
+	
+	public EmpVo selectOne(int num) throws SQLException{
+		String sql="select * from emp where empno=?";
+		JdbcTemplate<EmpVo> template=new JdbcTemplate<EmpVo>(dataSource);
+		return template.queryForObject(sql, new RowMapper<EmpVo>() {
+			
+			@Override
+			public EmpVo rows(ResultSet rs) throws SQLException {
+				return new EmpVo(
+						rs.getInt("empno"),rs.getInt("sal"),rs.getString("ename"),rs.getString("job")
+						);
+			}
+		}, num);
+	}
+	
 	public void insertOne(EmpVo bean) throws SQLException {
 		String sql="insert into emp (empno,ename,sal,job) values (?,?,?,?)";
 		JdbcTemplate template=new JdbcTemplate();
-		template.setDataSoruce(dataSoruce);
+		template.setDataSoruce(dataSource);
 		Object[] objs=new Object[] {bean.getEmpno(), bean.getEname(), bean.getSal(), bean.getJob()};
 		template.executeUpdate(sql, objs);
+	}
+	
+	public int deleteOne(int num) throws SQLException {
+		String sql="delete from emp where empno=?";
+		JdbcTemplate template=new JdbcTemplate(dataSource);
+		return template.executeUpdate(sql, num);
 	}
 }
 

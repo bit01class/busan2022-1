@@ -3,7 +3,7 @@ package com.bit.framework;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public interface RowMapper {
+public interface RowMapper<T> {
 
-	Object rows(ResultSet rs) throws SQLException;
+	T rows(ResultSet rs) throws SQLException;
 }

@@ -25,7 +25,7 @@ public class EmpDaoTest {
 		assertTrue(dao.selectAll().size()>0);
 	}
 
-	@Test
+	//@Test
 	public void testInsertOne() throws SQLException {
 //		dao.conn.setAutoCommit(false);
 		EmpVo target=new EmpVo(1015,1000,"test","tester");
@@ -40,6 +40,11 @@ public class EmpDaoTest {
 //		}catch (Exception e) {
 //			assertFalse(false);
 //		}
+	}
+	
+	@Test
+	public void testDeleteOne() throws SQLException {
+		assertSame(1, dao.deleteOne(1000));
 	}
 }
 
