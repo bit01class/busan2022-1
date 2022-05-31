@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="${pageContext.request.contextPath }/index.bit">비트교육센터</a>
+    </div>
+    <p class="navbar-text">
+    	<a href="${pageContext.request.contextPath }/index.bit">Home</a>
+    	<a href="${pageContext.request.contextPath }/emp/list.bit">EMP</a>
+    	<a href="${pageContext.request.contextPath }/dept/list.bit">DEPT</a>
+    	<a href="${pageContext.request.contextPath }/login/index.bit">LOGIN</a>
+    </p>
+  </div>
+</nav>
