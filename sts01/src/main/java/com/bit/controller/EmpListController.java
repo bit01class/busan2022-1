@@ -9,9 +9,10 @@ import org.springframework.web.servlet.mvc.Controller;
 import com.bit.model.Emp01Dao;
 import com.bit.model.Emp02Dao;
 import com.bit.model.Emp03Dao;
+import com.bit.model.EmpDao;
 
 public class EmpListController implements Controller {
-	Emp03Dao dao=new Emp03Dao();
+	EmpDao dao=new Emp03Dao();
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
