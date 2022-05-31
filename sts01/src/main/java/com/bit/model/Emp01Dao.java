@@ -31,4 +31,25 @@ public class Emp01Dao {
 		}
 		return list;
 	}
+
+	public void insertOne(EmpVo bean) throws ClassNotFoundException, SQLException {
+		String sql="insert into emp (empno,ename,sal,job) values (?,?,?,?)";
+		String driver="com.mysql.cj.jdbc.Driver";
+		String url="jdbc:mysql://localhost:3306/scott";
+		String user="user01";
+		String password="1234";
+		
+		Class.forName(driver);
+		try(
+				Connection conn=DriverManager.getConnection(url, user, password);
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+				){
+			pstmt.setInt(1, bean.getEmpno());
+			pstmt.setString(2, bean.getEname());
+			pstmt.setInt(3, bean.getSal());
+			pstmt.setString(4, bean.getJob());
+			pstmt.executeUpdate();
+		}
+		
+	}
 }

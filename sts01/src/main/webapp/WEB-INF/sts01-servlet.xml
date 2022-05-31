@@ -8,6 +8,10 @@
 	<bean name="/index.bit" class="com.bit.controller.IndexController"></bean>
 	<bean name="/emp/list.bit" class="com.bit.controller.EmpListController"></bean>
 	<bean name="/emp/add.bit" class="com.bit.controller.EmpAddController"></bean>
+	<bean name="/emp/insert.bit" class="com.bit.controller.EmpInsertController"></bean>
+	<bean name="/emp/detail.bit" class="com.bit.controller.EmpDetailController"></bean>
+	<bean name="/emp/update.bit" class="com.bit.controller.EmpUpdateController"></bean>
+	<bean name="/emp/delete.bit" class="com.bit.controller.EmpDeleteController"></bean>
 	
 	<!-- view Resolver -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
