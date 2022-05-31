@@ -3,15 +3,40 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+<bean id="dataSource" class="com.mysql.cj.jdbc.MysqlConnectionPoolDataSource">
+	<property name="url" value="jdbc:mysql://localhost:3306/scott"></property>
+	<property name="user" value="user01"></property>
+	<property name="password" value="1234"></property>
+</bean>
+
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<property name="dataSource" ref="dataSource"></property>
+</bean>
+  
+<bean id="dao" class="com.bit.model.Emp04Dao">
+	<property name="template" ref="jdbcTemplate"></property>
+</bean>
+
+
 	<!-- handler Mapping -->
 	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
 	<bean name="/index.bit" class="com.bit.controller.IndexController"></bean>
-	<bean name="/emp/list.bit" class="com.bit.controller.EmpListController"></bean>
+	<bean name="/emp/list.bit" class="com.bit.controller.EmpListController">
+		<property name="dao" ref="dao"></property>
+	</bean>
 	<bean name="/emp/add.bit" class="com.bit.controller.EmpAddController"></bean>
-	<bean name="/emp/insert.bit" class="com.bit.controller.EmpInsertController"></bean>
-	<bean name="/emp/detail.bit" class="com.bit.controller.EmpDetailController"></bean>
-	<bean name="/emp/update.bit" class="com.bit.controller.EmpUpdateController"></bean>
-	<bean name="/emp/delete.bit" class="com.bit.controller.EmpDeleteController"></bean>
+	<bean name="/emp/insert.bit" class="com.bit.controller.EmpInsertController">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	<bean name="/emp/detail.bit" class="com.bit.controller.EmpDetailController">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	<bean name="/emp/update.bit" class="com.bit.controller.EmpUpdateController">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	<bean name="/emp/delete.bit" class="com.bit.controller.EmpDeleteController">
+		<property name="dao" ref="dao"></property>
+	</bean>
 	
 	<!-- view Resolver -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

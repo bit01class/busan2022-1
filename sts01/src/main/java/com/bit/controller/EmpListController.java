@@ -12,7 +12,11 @@ import com.bit.model.Emp03Dao;
 import com.bit.model.EmpDao;
 
 public class EmpListController implements Controller {
-	EmpDao dao=new Emp03Dao();
+	EmpDao dao;
+	
+	public void setDao(EmpDao dao) {
+		this.dao = dao;
+	}
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
