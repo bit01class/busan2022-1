@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div class="row">
+	<div class="col-md-10 col-md-offset-2">
+	<address>
+	  <strong>비트교육센터</strong><br>
+	  서울특별시 서초구 서초대로74길33 비트빌 3층<br>
+	  <abbr title="Phone">P:</abbr> 02-3486-3456
+	</address>
+	
+	<address>
+	  <strong>Copyright by bitacademy co.ltd. All rights reserved</strong><br>
+	  <a href="mailto:#">webmaster@bitacademy.com</a>
+	</address>
+	</div>
+</div>
+</div>
