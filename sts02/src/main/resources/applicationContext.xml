@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+	<bean id="bean" class="com.bit.emp.model.EmpVo">
+		<property name="empno" value="1111"></property>
+		<property name="ename">test</property>
+		<property name="hiredate">
+			<bean class="java.sql.Date">
+				<constructor-arg value="1654129578690"></constructor-arg>
+			</bean>
+		</property>
+	</bean>
+	 <bean id="bean" class="com.bit.emp.model.EmpVo">
+	 	<constructor-arg value="2222"></constructor-arg>
+	 	<constructor-arg value="user02"></constructor-arg>
+	 </bean>
+	<bean id="now" class="java.sql.Date">
+		<constructor-arg value="1654129578690"></constructor-arg>
+	</bean>
+	 <bean id="bean" class="com.bit.emp.model.EmpVo">
+	 	<constructor-arg value="3333"></constructor-arg>
+	 	<constructor-arg value="1000"></constructor-arg>
+	 	<constructor-arg value="user03"></constructor-arg>
+	 	<constructor-arg value="tester"></constructor-arg>
+	 	<constructor-arg ref="now"></constructor-arg>
+	 </bean>
+	 
+    <bean id="now" class="java.util.Date"></bean>
+	<bean id="bean" class="com.bit.emp.model.EmpVo">
+		<property name="arr1">
+			<list>
+				<value>첫번째</value>
+				<value>두번째</value>
+				<value>세번째</value>
+				<value>네번째</value>
+			</list>
+		</property>
+	</bean>	
+	<bean id="bean" class="com.bit.emp.model.EmpVo">
+		<constructor-arg value="test" index="1"></constructor-arg>
+		<constructor-arg value="1111" index="0"></constructor-arg>
+	</bean>
+	 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/scott"></property>
+		<property name="username" value="user01"></property>
+		<property name="password" value="1234"></property>
+	</bean> 
+	<bean id="empDao" class="com.bit.emp.model.EmpDaoImpl1">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean> 
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
