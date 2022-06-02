@@ -10,6 +10,8 @@
 	    	<prop key="/index.bit">index</prop>
 	    	<prop key="/intro.bit">intro</prop>
 	    	<prop key="/emp/list.bit">list</prop>
+	    	<prop key="/emp/add.bit">add</prop>
+	    	<prop key="/emp/insert.bit">insert</prop>
 	    </props>
 	</property>
 </bean>
@@ -21,6 +23,12 @@
 </bean>
 <bean id="list" class="com.bit.emp.controller.ListController">
 	<property name="empDao" ref="empDao"/>
+</bean>
+<bean id="add" class="com.bit.controller.IndexController">
+	<property name="viewName" value="add"></property>
+</bean>
+<bean id="insert" class="com.bit.emp.controller.InsertController">
+	<property name="empDao" ref="empDao"></property>
 </bean>
 <!-- viewResolver -->
 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

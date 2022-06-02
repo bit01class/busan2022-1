@@ -14,6 +14,7 @@
   <li class="active">EMP</li>
 </ol>
 <h3 class="page-header">EMP List</h3>
+<a href="add.bit" class="btn btn-primary btn-block" role="button">입력</a>
 <table class="table">
 	<thead>
 		<tr>
