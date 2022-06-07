@@ -32,22 +32,26 @@ public class Emp01DaoImpl implements EmpDao<EmpVo> {
 
 	@Override
 	public EmpVo findOne(int idx) throws SQLException {
-		return null;
+		String sql="select * from emp where empno=?";
+		return jdbcTemplate.queryForObject(sql, mapper,idx);
 	}
 
 	@Override
 	public void insertOne(EmpVo obj) throws SQLException {
-
+		String sql="insert into emp (ename,sal,job,empno,hiredate) values (?,?,?,?,now())";
+		jdbcTemplate.update(sql,obj.getEname(),obj.getSal(),obj.getJob(),obj.getEmpno());
 	}
 
 	@Override
 	public int updateOne(EmpVo obj) throws SQLException {
-		return 0;
+		String sql="update emp set ename=?,sal=?,job=? where empno=?";
+		return jdbcTemplate.update(sql,obj.getEname(),obj.getSal(),obj.getJob(),obj.getEmpno());
 	}
 
 	@Override
 	public int deleteOne(int idx) throws SQLException {
-		return 0;
+		String sql="delete from emp where empno=?";
+		return jdbcTemplate.update(sql,idx);
 	}
 
 }
