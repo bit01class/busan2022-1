@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="${root }">
+        <img alt="Brand" src="${root}imgs/logo.jpg">
+      </a>
+    </div>
+    <div class="navbar-text">
+    	<a href="${root }">home</a>
+    	<a href="${root }emp/list">emp</a>
+    	<a href="${root }login/">login</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
