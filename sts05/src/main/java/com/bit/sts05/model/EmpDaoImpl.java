@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class EmpDaoImpl implements EmpDao<EmpVo> {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
@@ -40,8 +41,9 @@ public class EmpDaoImpl implements EmpDao<EmpVo> {
 	}
 
 	@Override
-	public void insertOne(EmpVo t) throws SQLException {
-
+	public void insertOne(EmpVo bean) throws SQLException {
+		String sql="insert into emp (ename,sal,job,empno,hiredate) values (?,?,?,?,now())";
+		jdbcTemplate.update(sql,bean.getEname(),bean.getSal(),bean.getJob(),bean.getEmpno());
 	}
 
 	@Override

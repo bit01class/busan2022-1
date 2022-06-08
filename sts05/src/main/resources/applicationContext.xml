@@ -4,9 +4,11 @@
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
 	<bean id="dataSource" 
 		class="org.apache.commons.dbcp.BasicDataSource" 
@@ -34,8 +36,33 @@
 	<context:component-scan base-package="com.bit.sts05.model" >
 	</context:component-scan>
 	
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	  <property name="dataSource" ref="dataSource"/>
+	</bean>
+	<!-- 
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="*" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
+ 
+	<aop:config>
+		<aop:pointcut id="requiredTx"
+			expression="execution(* com.bit.sts05.service.EmpService.*(..))"/>
+		<aop:advisor advice-ref="txAdvice"
+			pointcut-ref="requiredTx" />
+	</aop:config>
+	 -->
+	<context:component-scan base-package="com.bit.sts05.service" >
+	</context:component-scan>
+	<tx:annotation-driven transaction-manager="txManager"/>
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>
+
+
+
+
+
 
 
 
