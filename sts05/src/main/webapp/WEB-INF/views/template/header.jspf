@@ -1,0 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath }/webjars/bootstrap/3.4.1/css/bootstrap.min.css">
+<script type="text/javascript" src="${pageContext.servletContext.contextPath }/webjars/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.servletContext.contextPath }/webjars/bootstrap/3.4.1/js/bootstrap.min.js"></script>
