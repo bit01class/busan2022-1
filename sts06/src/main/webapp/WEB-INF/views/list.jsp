@@ -68,10 +68,30 @@ $(document).on('click','#emp button',function(e){
 	var empno=$(e.target).attr('data-empno');
 	$.getJSON('api/emp/'+empno,function(data){
 		var form=document.querySelector('#myModal form');
+		var idx=data.empno;
 		form.empno.value=data.empno;
 		form.ename.value=data.ename;
 		form.sal.value=data.sal;
 		form.job.value=data.job;
+		console.log(form.action);
+		$(form).one('submit',function(e){
+			e.preventDefault();
+			$(form.ename).removeProp('readonly');
+			$(form.sal).removeProp('readonly');
+			$(form.job).removeProp('readonly');
+			$(form).on('submit',function(e){
+				console.log(JSON.stringify({empno:Number(form.empno.value),ename:form.ename.value,sal:Number(form.sal.value),job:form.job.value}));
+				e.preventDefault();
+				$.ajax('api/emp/'+idx,{
+					method:'PUT',
+					data:JSON.stringify({empno:Number(form.empno.value),ename:form.ename.value,sal:Number(form.sal.value),job:form.job.value}),
+					success:function(data){
+						showList();
+						$('#myModal').modal('hide');
+					}
+				});
+			});
+		});
 	});
 });
 

@@ -1,6 +1,8 @@
 package com.bit.sts06.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -83,17 +85,24 @@ public class ApiController {
 		String msg=gson.toJson(bean);
 		res.getWriter().print(msg);
 	}
+	@RequestMapping(value = "/emp/{idx}",method = RequestMethod.PUT)
+	public void update(HttpServletRequest req,HttpServletResponse res) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream()));
+		String msg=br.readLine();
+		log.info(msg);
+		Gson gson=new Gson();
+		EmpVo bean=gson.fromJson(msg, EmpVo.class);
+		empDao.updateOne(bean);
+		res.setStatus(HttpServletResponse.SC_OK);
+	}
 	
-	@RequestMapping("/test")
+	@RequestMapping(value = "/test",method = RequestMethod.PUT)
 	public void testApi(HttpServletResponse res) throws IOException {
-		JsonArray arr=new JsonArray();
-		JsonObject json = new JsonObject();
-		json.addProperty("empno", 1111);
-		arr.add(json);
-		json = new JsonObject();
-		json.addProperty("empno", 2222);
-		arr.add(json);
-		res.getWriter().print(arr.toString());
+		String msg="{\"empno\":1234,\"ename\":\"abcd\"}";
+		Gson gson=new Gson();
+		EmpVo bean=gson.fromJson(msg, EmpVo.class);
+		log.info(bean.toString());
+		res.setStatus(HttpServletResponse.SC_OK);
 	}
 }
 
