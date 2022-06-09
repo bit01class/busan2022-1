@@ -169,7 +169,19 @@
 		    <artifactId>jquery</artifactId>
 		    <version>1.12.4</version>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/org.webjars.bower/bootstrap -->
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>bootstrap</artifactId>
+		    <version>3.4.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.9.0</version>
+		</dependency>
+				
 		    
 	</dependencies>
     <build>
