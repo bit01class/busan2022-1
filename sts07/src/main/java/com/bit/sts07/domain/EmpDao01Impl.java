@@ -45,7 +45,8 @@ public class EmpDao01Impl implements EmpDao {
 
 	@Override
 	public int updateOne(EmpVo bean) throws SQLException {
-		return 0;
+		String sql="update emp set ename=?,sal=?,job=? where empno=?";
+		return jdbcTemplate.update(sql,bean.getEname(),bean.getSal(),bean.getJob(),bean.getEmpno());
 	}
 
 	@Override

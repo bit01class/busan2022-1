@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#main">비트교육센터</a>
+    </div>
+    <ul class="nav navbar-nav">
+    	<li><a href="../#main">HOME</a></li>
+    	<li><a href="../#emp">EMP</a></li>
+    	<li><a href="../#addemp">ADD EMP</a></li>
+    	<li><a href="../dept/">DEPT</a></li>
+    	<li><a href="../#login">LOGIN</a></li>
+    </ul>
+  </div>
+</nav>

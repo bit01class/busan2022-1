@@ -19,6 +19,7 @@
     	<li><a href="#main">HOME</a></li>
     	<li><a href="#emp">EMP</a></li>
     	<li><a href="#addemp">ADD EMP</a></li>
+    	<li><a href="dept/">DEPT</a></li>
     	<li><a href="#login">LOGIN</a></li>
     </ul>
   </div>
@@ -89,6 +90,7 @@ $(document).on('click','#emp button',function(e){
 				e.preventDefault();
 				$.ajax('api/emp/'+idx,{
 					method:'PUT',
+					contentType:'application/json;charset=utf8',
 					data:JSON.stringify({empno:Number(form.empno.value),ename:form.ename.value,sal:Number(form.sal.value),job:form.job.value}),
 					success:function(data){
 						showList();
