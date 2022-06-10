@@ -24,9 +24,13 @@ public class EmpDaoTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-//		ApplicationContext ac=null;
-//		ac=new GenericXmlApplicationContext("/WEB-INF/spring/root-context.xml");
-		
+		ApplicationContext ac=null;
+//		new ClassPathXmlApplicationContext("/application-context.xml");
+//		new FileSystemXmlApplicationContext("c:\\~~\\sts07/src/main/webapp/WEB-INF/spring/root-context.xml");
+//		new FileSystemXmlApplicationContext("./src/main/webapp/WEB-INF/spring/root-context.xml");
+//		ac=new GenericXmlApplicationContext("classpath:/WEB-INF/spring/root-context.xml");
+		ac=new GenericXmlApplicationContext("file:src/main/webapp/WEB-INF/spring/root-context.xml");
+		empDao=ac.getBean(EmpDao.class);
 	}
 
 	@Before
@@ -34,40 +38,42 @@ public class EmpDaoTest {
 	}
 	
 	@Test
-	public void testDataSource() throws BeansException, SQLException {
+	public void test1DataSource() throws BeansException, SQLException {
 		ApplicationContext ac=null;
-		ac=new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/spring/root-context.xml");
+		ac=new GenericXmlApplicationContext("file:src/main/webapp/WEB-INF/spring/root-context.xml");
 		ac.getBean(DataSource.class).getConnection().close();
 	}
 
 	@Test
-	public void testFindAll() {
-		fail("Not yet implemented");
+	public void test2FindAll() throws SQLException {
+		assertNotNull(empDao);
+		assertNotNull(empDao.findAll());
+		assertNotEquals(0,empDao.findAll().size());
 	}
-
-	@Test
-	public void testFindOne() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testInsertOne() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testUpdateOne() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testDeleteOne() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testAllSize() {
-		fail("Not yet implemented");
-	}
+//
+//	@Test
+//	public void testFindOne() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testInsertOne() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testUpdateOne() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testDeleteOne() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testAllSize() {
+//		fail("Not yet implemented");
+//	}
 
 }
