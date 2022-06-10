@@ -18,22 +18,22 @@ public class DeptDaoImpl implements DeptDao {
 
 	@Override
 	public DeptVo findOne(int idx) throws Exception {
-		return null;
+		return sqlSession.selectOne("dept.selectOne",idx);
 	}
 
 	@Override
 	public void insertOne(DeptVo bean) throws Exception {
-
+		sqlSession.insert("dept.addOne",bean);
 	}
 
 	@Override
 	public int updateOne(DeptVo bean) throws Exception {
-		return 0;
+		return sqlSession.update("dept.updateOne",bean);
 	}
 
 	@Override
 	public int deleteOne(int idx) throws Exception {
-		return 0;
+		return sqlSession.delete("dept.deleteOne",idx);
 	}
 
 }

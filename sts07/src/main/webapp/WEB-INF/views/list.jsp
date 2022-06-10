@@ -13,6 +13,7 @@
 <div class="page-header">
   <h1>DEPT List <small>dept</small></h1>
 </div>
+<a href="./add" class="btn btn-primary btn-block" role="button">입력</a>
 <table class="table">
 	<thead>
 		<tr>
@@ -22,7 +23,13 @@
 		</tr>
 	</thead>
 	<tbody>
-
+		<c:forEach items="${list }" var="bean">
+		<tr>
+			<td><a href="./${bean.deptno }">${bean.deptno }</a></td>
+			<td><a href="./${bean.deptno }">${bean.dname }</a></td>
+			<td><a href="./${bean.deptno }">${bean.loc }</a></td>
+		</tr>
+		</c:forEach>
 	</tbody>
 </table>
 </body>

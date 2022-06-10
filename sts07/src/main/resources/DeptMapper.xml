@@ -6,4 +6,16 @@
   	<select id="selectAll" resultType="com.bit.sts07.domain.DeptVo">
   		select * from dept
   	</select>
+  	<insert id="addOne" parameterType="com.bit.sts07.domain.DeptVo">
+  		insert into dept values (#{deptno},#{dname},#{loc})
+  	</insert>
+  	<select id="selectOne" parameterType="int" resultType="com.bit.sts07.domain.DeptVo">
+  		select * from dept where deptno=#{val}
+  	</select>
+  	<update id="updateOne" parameterType="com.bit.sts07.domain.DeptVo">
+  		update dept set dname=#{dname}, loc=#{loc} where deptno=#{deptno}
+  	</update>
+  	<delete id="deleteOne" parameterType="int">
+  		delete from dept where deptno=#{value}
+  	</delete>
   </mapper>

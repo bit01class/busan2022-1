@@ -8,23 +8,9 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<bean 
-	id="propertyPlaceholderConfigurer"
-	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-	p:location="classpath:/userInfo.properties"
-	/>
-	
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-	p:driverClassName="com.mysql.cj.jdbc.Driver"
-	p:url="${db.mysql.url}"
-	p:username="${db.mysql.username}"
-	p:password="${db.mysql.password}"
-	p:minIdle="1" p:maxIdle="5" p:maxActive="3"
-	/>
 	
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
 	p:dataSource-ref="dataSource"
 	/>
 	
-	<context:component-scan base-package="com.bit.sts07.domain"></context:component-scan>	
 </beans>
