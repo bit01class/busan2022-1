@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="emp">
+  
+  	<select id="findAll" resultType="com.bit.sts08.domain.Emp">
+  		select * from emp
+  	</select>
+  	
+  	<select id="findOne" resultType="com.bit.sts08.domain.Emp" parameterType="int">
+  		select * from emp where empno=#{value}
+  	</select>
+  
+  	<insert id="insertOne" parameterType="com.bit.sts08.domain.Emp">
+  		insert into emp (empno,ename,sal,job,hiredate) values (#{empno},#{ename},#{sal},#{job},now())
+  	</insert>
+  	
+  	<update id="updateOne" parameterType="com.bit.sts08.domain.Emp">
+  		update emp set ename=#{ename},sal=#{sal},job=#{job} where empno=#{empno}
+  	</update>
+  	
+  	<delete id="deleteOne" parameterType="int">
+  		delete from emp where empno=#{value}
+  	</delete>
+  	
+  	<select id="totalSize" resultType="int">
+  		select count(*) from emp;
+  	</select>
+  	
+  	<select id="findMany" parameterType="string" resultType="com.bit.sts08.domain.Emp">
+  		select * from emp where ename like concat('%',#{values},'%')
+  	</select>
+  </mapper>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
