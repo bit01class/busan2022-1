@@ -13,4 +13,5 @@ public interface EmpDao {
 	int deleteOne(int idx);
 	int totalSize();
 	List<Emp> findMany(String val);
+	int login(Emp emp);
 }

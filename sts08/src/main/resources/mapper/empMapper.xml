@@ -32,6 +32,10 @@
   	<select id="findMany" parameterType="string" resultType="com.bit.sts08.domain.Emp">
   		select * from emp where ename like concat('%',#{values},'%')
   	</select>
+  	
+  	<select id="login" parameterType="com.bit.sts08.domain.Emp" resultType="int">
+  		select count(*) from emp where empno=#{empno} and ename=#{ename}
+  	</select>
   </mapper>
   
   

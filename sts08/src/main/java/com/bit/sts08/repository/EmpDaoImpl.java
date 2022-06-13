@@ -48,7 +48,10 @@ public class EmpDaoImpl implements EmpDao{
 		return sqlSession.selectList("emp.findMany",val);
 	}
 
-
+	@Override
+	public int login(Emp emp) {
+		return sqlSession.selectOne("emp.login",emp);
+	}
 }
 
 
