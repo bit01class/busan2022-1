@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.bit.sts12.repository.EmpRepo">
+  	<select id="findAll" resultType="bean">
+  		select * from emp
+  	</select>
+  	<select id="findOne" resultType="bean" parameterType="int">
+  		select * from emp where empno=#{value}
+  	</select>
+  </mapper>
