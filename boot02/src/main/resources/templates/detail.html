@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css"
+th:href="@{/css/bootstrap.min.css}">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../static/js/bootstrap.js" th:attr="src=@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+	<h1>상세페이지</h1>
+	<form action="list.html" th:action="@{/dept/}+${bean.deptno}" method="post" enctype="application/x-www-form-urlencoded">
+		<input type="hidden" name="_method" value="PUT">
+	  <div class="form-group">
+	    <label for="deptno">deptno</label>
+	    <input type="text" class="form-control" name="deptno" id="deptno" value="1111" th:attr="value=${bean.deptno}">
+	  </div>
+	  <div class="form-group">
+	    <label for="dname">dname</label>
+	    <input type="text" class="form-control" name="dname" id="dname" value="tester" th:attr="value=${bean.dname}">
+	  </div>
+	  <div class="form-group">
+	    <label for="loc">loc</label>
+	    <input type="text" class="form-control" name="loc" id="loc" value="test" th:value="${bean.loc}">
+	  </div>
+	  <button type="submit" class="btn btn-primary">수정</button>
+	  <button type="reset" class="btn btn-default">Reset</button>
+	  <button type="button" class="btn btn-default" onclick="history.back();">Back</button>
+	  <button type="button" class="btn btn-danger">삭제</button>
+	</form>
+	<script type="text/javascript">
+	$('.btn.btn-danger').click(function(){
+		$('input[type="hidden"]').val('delete');
+		$('form').submit();
+	});
+	</script>
+</body>
+</html>
